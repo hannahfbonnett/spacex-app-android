@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Mob Dev SpaceX App</string>
+    <string name="item_on_tapped_toast_test">Tapped on item %s: %s</string>
 </resources>
