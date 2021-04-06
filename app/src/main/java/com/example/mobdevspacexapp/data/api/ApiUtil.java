@@ -1,6 +1,12 @@
 package com.example.mobdevspacexapp.data.api;
 
-import java.net.URL;
+import com.example.mobdevspacexapp.data.model.Launch;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
 
 import lombok.NoArgsConstructor;
 
@@ -11,5 +17,23 @@ public class ApiUtil {
 
     public static String buildUrlString(String endpoint) {
         return BASE_API_URL + endpoint;
+    }
+
+    public static ArrayList<Launch> getLaunchesFromJson(JSONArray response) {
+        ArrayList<Launch> launches = new ArrayList<>();
+        int numberOfLaunches = response.length();
+        for(int i = 0; i < numberOfLaunches; i++) {
+            try {
+                JSONObject jsonObject = response.getJSONObject(i);
+                String launchName = jsonObject.getString("name");
+                int launchNumber = jsonObject.getInt("flight_number");
+                String launchDateTime = jsonObject.getString("date_utc");
+                String launchPatchLinkSmall = jsonObject.getJSONObject("links").getJSONObject("patch").getString("small");
+                launches.add(new Launch(launchNumber, launchName, launchDateTime, launchPatchLinkSmall));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+        return launches;
     }
 }

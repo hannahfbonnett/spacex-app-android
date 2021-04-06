@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -16,10 +17,13 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.example.mobdevspacexapp.R;
 import com.example.mobdevspacexapp.data.api.ApiUtil;
+import com.example.mobdevspacexapp.data.model.Launch;
 import com.example.mobdevspacexapp.net.VolleyController;
 
 import org.json.JSONArray;
 
+
+import java.util.ArrayList;
 
 import lombok.NoArgsConstructor;
 
@@ -45,7 +49,12 @@ public class LaunchesUpcomingFragment extends Fragment {
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
-                        textView.setText(response.toString());
+                        ArrayList<Launch> upcomingLaunches = ApiUtil.getLaunchesFromJson(response);
+                        String resultString = "";
+                        for (Launch launch : upcomingLaunches) {
+                            resultString = resultString + launch.getFlightName() + "\n" + launch.getDateUtc() + "\n\n";
+                        }
+                        textView.setText(resultString);
                     }
                 });
 
