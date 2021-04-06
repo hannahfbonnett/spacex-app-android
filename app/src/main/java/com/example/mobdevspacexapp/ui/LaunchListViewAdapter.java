@@ -1,14 +1,17 @@
 package com.example.mobdevspacexapp.ui;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
+
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatImageView;
 import androidx.appcompat.widget.AppCompatTextView;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mobdevspacexapp.R;
@@ -59,6 +62,7 @@ public class LaunchListViewAdapter extends RecyclerView.Adapter<LaunchListViewAd
 
     protected class LaunchListViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
+
         private AppCompatTextView launchNameText;
         private AppCompatTextView launchFlightNumberText;
         private AppCompatTextView launchDatetimeText;
@@ -75,7 +79,7 @@ public class LaunchListViewAdapter extends RecyclerView.Adapter<LaunchListViewAd
         }
 
         public void bind(Launch launch) {
-            launchNameText.setText(launch.getFlightName());
+            launchNameText.setText(launch.getName());
             launchFlightNumberText.setText("Flight no: " + launch.getFlightNumber());
             launchDatetimeText.setText(launch.getDateUtc());
             Picasso.get()
@@ -85,13 +89,17 @@ public class LaunchListViewAdapter extends RecyclerView.Adapter<LaunchListViewAd
 
         @Override
         public void onClick(View view) {
-
             int i = this.getAdapterPosition();
-            Toast.makeText(context,
-                    String.format("Tapped on item %s: %s",
-                            String.valueOf(i),
-                            this.launchNameText.getText()),
-                    Toast.LENGTH_SHORT).show();
+            Launch selectedLaunch = launches.get(i);
+            FragmentManager fragmentManager = ((AppCompatActivity)context).getSupportFragmentManager();
+            LaunchDetailFragment launchDetailFragment = new LaunchDetailFragment();
+            Bundle bundle = new Bundle();
+            bundle.putParcelable("Launch", selectedLaunch);
+            launchDetailFragment.setArguments(bundle);
+            fragmentManager.beginTransaction()
+                    .replace(R.id.launchesFragmentContainer, launchDetailFragment)
+                    .addToBackStack(null)
+                    .commit();
         }
     }
 

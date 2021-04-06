@@ -27,9 +27,10 @@ public class ApiUtil {
                 JSONObject jsonObject = response.getJSONObject(i);
                 String launchName = jsonObject.getString("name");
                 int launchNumber = jsonObject.getInt("flight_number");
+                String launchDetail = jsonObject.getString("details");
                 String launchDateTime = jsonObject.getString("date_utc");
                 String launchPatchLinkSmall = jsonObject.getJSONObject("links").getJSONObject("patch").getString("small");
-                launches.add(new Launch(launchNumber, launchName, launchDateTime, launchPatchLinkSmall));
+                launches.add(new Launch(launchNumber, launchName, launchDetail, launchDateTime, launchPatchLinkSmall));
             } catch (JSONException e) {
                 e.printStackTrace();
             }
