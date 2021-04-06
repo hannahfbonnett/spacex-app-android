@@ -53,11 +53,7 @@ public class LaunchesUpcomingFragment extends Fragment {
                     @Override
                     public void onResponse(JSONArray response) {
                         ArrayList<Launch> upcomingLaunches = ApiUtil.getLaunchesFromJson(response);
-//                        String resultString = "";
-//                        for (Launch launch : upcomingLaunches) {
-//                            resultString = resultString + launch.getFlightName() + "\n" + launch.getDateUtc() + "\n\n";
-//                        }
-                        //textView.setText(resultString);
+
                         LaunchListViewAdapter adapter = new LaunchListViewAdapter(context, upcomingLaunches);
                         launchListView.setAdapter(adapter);
                     }

@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mobdevspacexapp.R;
 import com.example.mobdevspacexapp.data.model.Launch;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -55,11 +56,7 @@ public class LaunchListViewAdapter extends RecyclerView.Adapter<LaunchListViewAd
         return (launches == null ? 0 : launches.size());
     }
 
-    /*
-        This is a custom object used by the custom adapter for each row in our recyclerview.
-        It is currently populated assuming that you are using the example recycler view row
-        layout (see TO-DO(9)). If you are not, modify the below to match your layout instead.
-     */
+
     protected class LaunchListViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         private AppCompatTextView launchNameText;
@@ -81,7 +78,9 @@ public class LaunchListViewAdapter extends RecyclerView.Adapter<LaunchListViewAd
             launchNameText.setText(launch.getFlightName());
             launchFlightNumberText.setText("Flight no: " + launch.getFlightNumber());
             launchDatetimeText.setText(launch.getDateUtc());
-
+            Picasso.get()
+                    .load(launch.getPatchLinkSmall())
+                    .into(launchIcon);
         }
 
         @Override

@@ -11,6 +11,7 @@
         android:id="@+id/launch_list_item_icon"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
+        android:src="@drawable/ic_image"
         android:layout_marginEnd="@dimen/launch_list_item_padding"
         android:layout_marginRight="@dimen/launch_list_item_padding"/>
 
