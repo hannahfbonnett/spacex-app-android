@@ -14,14 +14,11 @@ import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
 public class LaunchesAllFragment extends Fragment {
-    public static final String allText = "All launches here";
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.launches_innertabs, container, false);
-
-        AppCompatTextView textView = v.findViewById(R.id.launches_innertab_text);
-        textView.setText(allText);
 
         return v;
     }

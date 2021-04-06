@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.Request;
@@ -30,17 +31,19 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class LaunchesUpcomingFragment extends Fragment {
 
-    public static final String upcomingText = "Upcoming launches here";
+    private RecyclerView launchListView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.launches_innertabs, container, false);
 
-        Context context = getContext();
+        final Context context = getContext();
         if (context == null) return v;
 
-        final AppCompatTextView textView = v.findViewById(R.id.launches_innertab_text);
-        textView.setText(upcomingText);
+
+        launchListView = v.findViewById(R.id.launch_list_view);
+        LinearLayoutManager launchesLayoutManager = new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false);
+        launchListView.setLayoutManager(launchesLayoutManager);
 
         String upcomingLaunchesUrl = ApiUtil.buildUrlString("/launches/upcoming");
 
@@ -50,11 +53,13 @@ public class LaunchesUpcomingFragment extends Fragment {
                     @Override
                     public void onResponse(JSONArray response) {
                         ArrayList<Launch> upcomingLaunches = ApiUtil.getLaunchesFromJson(response);
-                        String resultString = "";
-                        for (Launch launch : upcomingLaunches) {
-                            resultString = resultString + launch.getFlightName() + "\n" + launch.getDateUtc() + "\n\n";
-                        }
-                        textView.setText(resultString);
+//                        String resultString = "";
+//                        for (Launch launch : upcomingLaunches) {
+//                            resultString = resultString + launch.getFlightName() + "\n" + launch.getDateUtc() + "\n\n";
+//                        }
+                        //textView.setText(resultString);
+                        LaunchListViewAdapter adapter = new LaunchListViewAdapter(context, upcomingLaunches);
+                        launchListView.setAdapter(adapter);
                     }
                 });
 

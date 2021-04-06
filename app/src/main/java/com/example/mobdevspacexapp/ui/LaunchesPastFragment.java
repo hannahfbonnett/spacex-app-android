@@ -14,14 +14,10 @@ import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
 public class LaunchesPastFragment extends Fragment {
-    public static final String pastText = "Past launches here";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.launches_innertabs, container, false);
-
-        AppCompatTextView textView = v.findViewById(R.id.launches_innertab_text);
-        textView.setText(pastText);
 
         return v;
     }
