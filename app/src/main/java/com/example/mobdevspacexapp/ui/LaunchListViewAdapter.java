@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mobdevspacexapp.R;
 import com.example.mobdevspacexapp.data.model.Launch;
+import com.example.mobdevspacexapp.util.DateTimeConverter;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -41,17 +42,6 @@ public class LaunchListViewAdapter extends RecyclerView.Adapter<LaunchListViewAd
     public void onBindViewHolder(@NonNull LaunchListViewAdapter.LaunchListViewHolder holder, int position) {
         Launch launch = launches.get(position);
         holder.bind(launch);
-//        if (this.launchManager != null) {
-//            LaunchListItem launchListItem = this.launchManager.getLaunchByIndex(position);
-//            holder.launchNameText.setText(launchListItem.getFlightName());
-//            holder.launchDatetimeText.setText(launchListItem.getDateUtc());
-//            //holder.launchIcon.setImageResource(launch.getPatchLinkSmall());
-//            Picasso.get()
-//                    .load(launchListItem.getPatchLinkSmall())
-//                    .centerInside()
-//                    .fit()
-//                    .into(holder.launchIcon);
-//        }
     }
 
     @Override
@@ -78,10 +68,11 @@ public class LaunchListViewAdapter extends RecyclerView.Adapter<LaunchListViewAd
             itemView.setOnClickListener(this);
         }
 
+
         public void bind(Launch launch) {
             launchNameText.setText(launch.getName());
             launchFlightNumberText.setText("Flight no: " + launch.getFlightNumber());
-            launchDatetimeText.setText(launch.getDateUtc());
+            launchDatetimeText.setText(DateTimeConverter.getFormattedUnixDateTime(launch.getDateTimeUnix()));
             Picasso.get()
                     .load(launch.getPatchLinkSmall())
                     .into(launchIcon);
@@ -101,6 +92,7 @@ public class LaunchListViewAdapter extends RecyclerView.Adapter<LaunchListViewAd
                     .addToBackStack(null)
                     .commit();
         }
+
     }
 
 }

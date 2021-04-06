@@ -14,6 +14,7 @@ public class Launch implements Parcelable {
     private String detail;
     private String dateUtc;
     private String patchLinkSmall;
+    private Long dateTimeUnix;
 
     protected Launch(Parcel in) {
         flightNumber = in.readInt();
@@ -21,6 +22,7 @@ public class Launch implements Parcelable {
         detail = in.readString();
         dateUtc = in.readString();
         patchLinkSmall = in.readString();
+        dateTimeUnix = in.readLong();
     }
 
     public static final Creator<Launch> CREATOR = new Creator<Launch>() {
@@ -47,5 +49,6 @@ public class Launch implements Parcelable {
         dest.writeString(detail);
         dest.writeString(dateUtc);
         dest.writeString(patchLinkSmall);
+        dest.writeLong(dateTimeUnix);
     }
 }
