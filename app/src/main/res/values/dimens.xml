@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="launch_list_item_padding">16dip</dimen>
+    <dimen name="launch_list_item_name_size">20sp</dimen>
+    <dimen name="launch_list_item_flight_number_size">18sp</dimen>
+    <dimen name="launch_list_item_datetime_size">18sp</dimen>
+    <dimen name="standard_margin">16dp</dimen>
+</resources>
