@@ -1,24 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.appcompat.widget.LinearLayoutCompat
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:padding="@dimen/launch_list_item_padding"
     android:background="?android:attr/selectableItemBackground"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:weightSum="100">
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/launch_list_item_icon"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
+        android:layout_weight="30"
         android:layout_height="match_parent"
-        android:src="@drawable/ic_image"
+        app:srcCompat="@drawable/ic_rocket_launch"
         android:layout_marginEnd="@dimen/launch_list_item_padding"
         android:layout_marginRight="@dimen/launch_list_item_padding"/>
 
     <androidx.appcompat.widget.LinearLayoutCompat
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_weight="70">
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/launch_list_item_name"

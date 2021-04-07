@@ -73,9 +73,11 @@ public class LaunchListViewAdapter extends RecyclerView.Adapter<LaunchListViewAd
             launchNameText.setText(launch.getName());
             launchFlightNumberText.setText("Flight no: " + launch.getFlightNumber());
             launchDatetimeText.setText(DateTimeConverter.getFormattedUnixDateTime(launch.getDateTimeUnix()));
-            Picasso.get()
-                    .load(launch.getPatchLinkSmall())
-                    .into(launchIcon);
+            if(!launch.getPatchLinkSmall().equals("null")) {
+                Picasso.get()
+                        .load(launch.getPatchLinkSmall())
+                        .into(launchIcon);
+            }
         }
 
         @Override

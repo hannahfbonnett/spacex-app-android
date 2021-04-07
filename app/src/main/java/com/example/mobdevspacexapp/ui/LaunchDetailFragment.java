@@ -1,6 +1,5 @@
 package com.example.mobdevspacexapp.ui;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +13,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.mobdevspacexapp.R;
 import com.example.mobdevspacexapp.data.model.Launch;
+import com.example.mobdevspacexapp.util.DateTimeConverter;
 import com.squareup.picasso.Picasso;
 
 public class LaunchDetailFragment extends Fragment {
@@ -45,10 +45,12 @@ public class LaunchDetailFragment extends Fragment {
     public void bind(Launch launch) {
         launchNameText.setText(launch.getName());
         launchFlightNumberText.setText("Flight no: " + launch.getFlightNumber());
-        launchDatetimeText.setText(launch.getDateUtc());
+        launchDatetimeText.setText(DateTimeConverter.getFormattedUnixDateTime(launch.getDateTimeUnix()));
         launchDetailsText.setText(launch.getDetail());
-        Picasso.get()
-                .load(launch.getPatchLinkSmall())
-                .into(launchIcon);
+        if(!launch.getPatchLinkSmall().equals("null")) {
+            Picasso.get()
+                    .load(launch.getPatchLinkSmall())
+                    .into(launchIcon);
+        }
     }
 }
