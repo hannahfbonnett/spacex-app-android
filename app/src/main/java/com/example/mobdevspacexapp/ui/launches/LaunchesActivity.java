@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import android.os.Bundle;
 
@@ -33,10 +35,15 @@ public class LaunchesActivity extends AppCompatActivity {
         this.navDrawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.launchesFragmentContainer, new LaunchesTabsFragment())
-                .commit();
+        changeInternalFragment(new LaunchesTabsFragment(), R.id.launchesFragmentContainer);
+    }
 
+    private void changeInternalFragment(Fragment fragment, int fragmentContainer){
+        FragmentManager supportFragmentManager = getSupportFragmentManager();
+
+        supportFragmentManager.beginTransaction()
+                .replace(fragmentContainer, fragment)
+                .commit();
     }
 
 
