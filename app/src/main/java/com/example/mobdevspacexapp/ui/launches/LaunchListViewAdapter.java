@@ -1,4 +1,4 @@
-package com.example.mobdevspacexapp.ui;
+package com.example.mobdevspacexapp.ui.launches;
 
 import android.content.Context;
 import android.os.Bundle;

@@ -1,4 +1,4 @@
-package com.example.mobdevspacexapp.ui;
+package com.example.mobdevspacexapp.ui.launches;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -7,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import androidx.appcompat.widget.AppCompatTextView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -28,7 +27,7 @@ import java.util.ArrayList;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
-public class LaunchesAllFragment extends Fragment {
+public class LaunchesPastFragment extends Fragment {
 
     private RecyclerView launchListView;
 
@@ -44,16 +43,16 @@ public class LaunchesAllFragment extends Fragment {
         LinearLayoutManager launchesLayoutManager = new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false);
         launchListView.setLayoutManager(launchesLayoutManager);
 
-        String upcomingLaunchesUrl = ApiUtil.buildUrlString("/launches");
+        String upcomingLaunchesUrl = ApiUtil.buildUrlString("/launches/past");
 
         fetchDataAndUpdateList(
                 upcomingLaunchesUrl,
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
-                        ArrayList<Launch> allLaunches = ApiUtil.getLaunchesFromJson(response);
+                        ArrayList<Launch> pastLaunches = ApiUtil.getLaunchesFromJson(response);
 
-                        LaunchListViewAdapter adapter = new LaunchListViewAdapter(context, allLaunches);
+                        LaunchListViewAdapter adapter = new LaunchListViewAdapter(context, pastLaunches);
                         launchListView.setAdapter(adapter);
                     }
                 });

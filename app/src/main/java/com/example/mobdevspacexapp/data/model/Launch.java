@@ -3,6 +3,8 @@ package com.example.mobdevspacexapp.data.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.util.Optional;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 

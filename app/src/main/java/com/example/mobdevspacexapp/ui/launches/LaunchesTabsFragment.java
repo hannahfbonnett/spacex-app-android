@@ -1,4 +1,4 @@
-package com.example.mobdevspacexapp.ui;
+package com.example.mobdevspacexapp.ui.launches;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

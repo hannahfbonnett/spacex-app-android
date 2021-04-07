@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">Mob Dev SpaceX App</string>
-    <string name="item_on_tapped_toast_test">Tapped on item %s: %s</string>
+
+    <string name="drawer_header_title">SpaceX</string>
+
+    <string name="drawer_company_title">About SpaceX</string>
+    <string name="drawer_settings_title">Settings</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
 </resources>
