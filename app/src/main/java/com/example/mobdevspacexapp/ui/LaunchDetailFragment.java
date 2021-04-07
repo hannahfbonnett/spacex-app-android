@@ -46,7 +46,11 @@ public class LaunchDetailFragment extends Fragment {
         launchNameText.setText(launch.getName());
         launchFlightNumberText.setText("Flight no: " + launch.getFlightNumber());
         launchDatetimeText.setText(DateTimeConverter.getFormattedUnixDateTime(launch.getDateTimeUnix()));
-        launchDetailsText.setText(launch.getDetail());
+        if(!launch.getDetail().equals("null")) {
+            launchDetailsText.setText(launch.getDetail());
+        } else {
+            launchDetailsText.setText("Awaiting more information from SpaceX.");
+        }
         if(!launch.getPatchLinkSmall().equals("null")) {
             Picasso.get()
                     .load(launch.getPatchLinkSmall())
