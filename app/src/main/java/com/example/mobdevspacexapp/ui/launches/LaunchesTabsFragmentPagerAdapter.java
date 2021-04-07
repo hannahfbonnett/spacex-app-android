@@ -1,4 +1,4 @@
-package com.example.mobdevspacexapp.ui;
+package com.example.mobdevspacexapp.ui.launches;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
