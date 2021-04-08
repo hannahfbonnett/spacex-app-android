@@ -39,7 +39,6 @@ public class LaunchesUpcomingFragment extends Fragment {
         final Context context = getContext();
         if (context == null) return v;
 
-
         launchListView = v.findViewById(R.id.launch_list_view);
         LinearLayoutManager launchesLayoutManager = new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false);
         launchListView.setLayoutManager(launchesLayoutManager);
