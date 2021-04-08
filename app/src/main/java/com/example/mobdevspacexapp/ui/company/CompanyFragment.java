@@ -67,7 +67,7 @@ public class CompanyFragment extends Fragment {
                     @Override
                     public void onResponse(JSONObject response) {
                         Company company = ApiUtil.getCompanyInfoFromJson(response);
-                        
+
                         nameText.setText(company.getName());
                         descriptionText.setText(company.getDescription());
                         founderNameText.setText(company.getFounder());
