@@ -1,20 +1,26 @@
-package com.example.mobdevspacexapp.ui.launches;
+package com.example.mobdevspacexapp.ui;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import android.os.Bundle;
+import android.view.MenuItem;
 
 import com.example.mobdevspacexapp.R;
+import com.example.mobdevspacexapp.ui.launches.LaunchesTabsFragment;
+import com.example.mobdevspacexapp.ui.settings.SettingsFragment;
+import com.google.android.material.navigation.NavigationView;
 
-public class LaunchesActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private DrawerLayout navDrawer;
+    private NavigationView navView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +41,10 @@ public class LaunchesActivity extends AppCompatActivity {
         this.navDrawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        changeInternalFragment(new LaunchesTabsFragment(), R.id.launchesFragmentContainer);
+        this.navView = (NavigationView) findViewById(R.id.nav_view);
+        this.navView.setNavigationItemSelectedListener(this);
+
+        changeInternalFragment(new LaunchesTabsFragment(), R.id.fragmentContainer);
     }
 
     private void changeInternalFragment(Fragment fragment, int fragmentContainer){
@@ -44,6 +53,22 @@ public class LaunchesActivity extends AppCompatActivity {
         supportFragmentManager.beginTransaction()
                 .replace(fragmentContainer, fragment)
                 .commit();
+    }
+
+
+    @Override
+    public boolean onNavigationItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        switch (id){
+            case R.id.nav_drawer_settings:
+                changeInternalFragment(new SettingsFragment(), R.id.fragmentContainer);
+                break;
+        }
+
+        this.navDrawer.closeDrawer(GravityCompat.START);
+
+        return true;
     }
 
 

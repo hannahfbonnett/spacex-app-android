@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
@@ -19,6 +20,8 @@ public class LaunchesTabsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.launches_tabs_fragment, container, false);
+
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Launches");
 
         String[] tabTitles = this.getResources().getStringArray(R.array.launchesTabTitles);
 
