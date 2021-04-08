@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.example.mobdevspacexapp.R;
+import com.example.mobdevspacexapp.ui.company.CompanyFragment;
 import com.example.mobdevspacexapp.ui.launches.LaunchesTabsFragment;
 import com.example.mobdevspacexapp.ui.settings.SettingsFragment;
 import com.google.android.material.navigation.NavigationView;
@@ -63,6 +64,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         switch (id){
             case R.id.nav_drawer_settings:
                 changeInternalFragment(new SettingsFragment(), R.id.fragmentContainer);
+                break;
+            case R.id.nav_drawer_company:
+                changeInternalFragment(new CompanyFragment(), R.id.fragmentContainer);
                 break;
         }
 
