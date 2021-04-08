@@ -90,7 +90,7 @@ public class LaunchListViewAdapter extends RecyclerView.Adapter<LaunchListViewAd
             bundle.putParcelable("Launch", selectedLaunch);
             launchDetailFragment.setArguments(bundle);
             fragmentManager.beginTransaction()
-                    .replace(R.id.launchesFragmentContainer, launchDetailFragment)
+                    .replace(R.id.fragmentContainer, launchDetailFragment)
                     .addToBackStack(null)
                     .commit();
         }
