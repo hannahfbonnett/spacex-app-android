@@ -1,5 +1,7 @@
 package com.example.mobdevspacexapp.ui.company;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -109,6 +111,9 @@ public class CompanyFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View view) {
         String url = ((TextView)view).getText().toString();
-        System.out.println("Clicked: " + url);
+        Intent intent = new Intent();
+        intent.setAction(Intent.ACTION_VIEW);
+        intent.setData(Uri.parse(url));
+        startActivity(intent);
     }
 }
