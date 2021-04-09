@@ -1,10 +1,13 @@
 package com.example.mobdevspacexapp.ui.company;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -23,7 +26,7 @@ import com.example.mobdevspacexapp.net.VolleyController;
 
 import org.json.JSONObject;
 
-public class CompanyFragment extends Fragment {
+public class CompanyFragment extends Fragment implements View.OnClickListener {
 
     private AppCompatTextView nameText;
     private AppCompatTextView descriptionText;
@@ -47,10 +50,6 @@ public class CompanyFragment extends Fragment {
         this.descriptionText = v.findViewById(R.id.company_description);
         this.founderNameText = v.findViewById(R.id.company_founder_name);
         this.founderYearText = v.findViewById(R.id.company_founded_year);
-
-        if(founderYearText == null) {
-            System.out.println("Founder year text is null");
-        }
         this.employeesNumberText = v.findViewById(R.id.company_employees_number);
         this.vehiclesNumberText = v.findViewById(R.id.company_vehicles_number);
         this.launchSitesNumberText = v.findViewById(R.id.company_launch_sites_number);
@@ -79,10 +78,17 @@ public class CompanyFragment extends Fragment {
                         websiteLinkText.setText(company.getWebsiteLink());
                         flickrLinkText.setText(company.getFlickrLink());
                         twitterLinkText.setText(company.getTwitterLink());
+
+                        setLinksOnClickListeners();
                     }
                 });
-
         return v;
+    }
+
+    public void setLinksOnClickListeners() {
+        websiteLinkText.setOnClickListener(this);
+        flickrLinkText.setOnClickListener(this);
+        twitterLinkText.setOnClickListener(this);
     }
 
 
@@ -100,5 +106,14 @@ public class CompanyFragment extends Fragment {
                 }
         );
         VolleyController.getInstance(getActivity().getApplicationContext()).addToRequestQueue(exampleRequest);
+    }
+
+    @Override
+    public void onClick(View view) {
+        String url = ((TextView)view).getText().toString();
+        Intent intent = new Intent();
+        intent.setAction(Intent.ACTION_VIEW);
+        intent.setData(Uri.parse(url));
+        startActivity(intent);
     }
 }
