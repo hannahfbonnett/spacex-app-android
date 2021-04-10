@@ -1,5 +1,6 @@
 package com.example.mobdevspacexapp.ui.company;
 
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -15,18 +16,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.fragment.app.Fragment;
 
-import com.android.volley.Request;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.example.mobdevspacexapp.R;
-import com.example.mobdevspacexapp.data.api.ApiUtil;
+import com.example.mobdevspacexapp.data.api.SpaceXDataService;
 import com.example.mobdevspacexapp.data.model.Company;
-import com.example.mobdevspacexapp.net.VolleyController;
-
-import org.json.JSONObject;
 
 public class CompanyFragment extends Fragment implements View.OnClickListener {
+
+    private SpaceXDataService spaceXDataService;
 
     private AppCompatTextView nameText;
     private AppCompatTextView descriptionText;
@@ -43,8 +39,13 @@ public class CompanyFragment extends Fragment implements View.OnClickListener {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Settings");
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Company");
         View v = inflater.inflate(R.layout.company_info, container, false);
+
+        final Context context = getContext();
+        if (context == null) return v;
+
+        spaceXDataService = new SpaceXDataService(context);
 
         this.nameText = v.findViewById(R.id.company_name);
         this.descriptionText = v.findViewById(R.id.company_description);
@@ -58,54 +59,40 @@ public class CompanyFragment extends Fragment implements View.OnClickListener {
         this.flickrLinkText = v.findViewById(R.id.company_flickr_link);
         this.twitterLinkText = v.findViewById(R.id.company_twitter_link);
 
-        String upcomingLaunchesUrl = ApiUtil.buildUrlString("/company");
-
-        fetchDataAndUpdateText(
-                upcomingLaunchesUrl,
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        Company company = ApiUtil.getCompanyInfoFromJson(response);
-
-                        nameText.setText(company.getName());
-                        descriptionText.setText(company.getDescription());
-                        founderNameText.setText(company.getFounder());
-                        founderYearText.setText(String.valueOf(company.getFoundedYear()));
-                        employeesNumberText.setText(String.valueOf(company.getNumberOfEmployees()));
-                        vehiclesNumberText.setText(String.valueOf(company.getNumberOfVehicles()));
-                        launchSitesNumberText.setText(String.valueOf(company.getNumberOfLaunchSites()));
-                        testSitesNumberText.setText(String.valueOf(company.getNumberOfTestSites()));
-                        websiteLinkText.setText(company.getWebsiteLink());
-                        flickrLinkText.setText(company.getFlickrLink());
-                        twitterLinkText.setText(company.getTwitterLink());
-
-                        setLinksOnClickListeners();
-                    }
-                });
+        fetchCompanyDataAndUpdateText(context);
         return v;
+    }
+
+    private void fetchCompanyDataAndUpdateText(Context context){
+        spaceXDataService.getCompanyInfo(new SpaceXDataService.CompanyListener() {
+            @Override
+            public void onError(String message) {
+                Log.d("ERROR", message);
+            }
+
+            @Override
+            public void onResponse(Company response) {
+                nameText.setText(response.getName());
+                descriptionText.setText(response.getDescription());
+                founderNameText.setText(response.getFounder());
+                founderYearText.setText(String.valueOf(response.getFoundedYear()));
+                employeesNumberText.setText(String.valueOf(response.getNumberOfEmployees()));
+                vehiclesNumberText.setText(String.valueOf(response.getNumberOfVehicles()));
+                launchSitesNumberText.setText(String.valueOf(response.getNumberOfLaunchSites()));
+                testSitesNumberText.setText(String.valueOf(response.getNumberOfTestSites()));
+                websiteLinkText.setText(response.getWebsiteLink());
+                flickrLinkText.setText(response.getFlickrLink());
+                twitterLinkText.setText(response.getTwitterLink());
+
+                setLinksOnClickListeners();
+            }
+        });
     }
 
     public void setLinksOnClickListeners() {
         websiteLinkText.setOnClickListener(this);
         flickrLinkText.setOnClickListener(this);
         twitterLinkText.setOnClickListener(this);
-    }
-
-
-    private void fetchDataAndUpdateText(String url, Response.Listener<JSONObject> onResponse){
-        JsonObjectRequest exampleRequest = new JsonObjectRequest(
-                Request.Method.GET,
-                url,
-                null,
-                onResponse,
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Log.d("ERROR", error.getMessage());
-                    }
-                }
-        );
-        VolleyController.getInstance(getActivity().getApplicationContext()).addToRequestQueue(exampleRequest);
     }
 
     @Override

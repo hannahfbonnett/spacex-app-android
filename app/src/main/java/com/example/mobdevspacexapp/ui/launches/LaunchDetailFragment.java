@@ -21,6 +21,7 @@ public class LaunchDetailFragment extends Fragment {
     private AppCompatTextView launchNameText;
     private AppCompatTextView launchFlightNumberText;
     private AppCompatTextView launchDatetimeText;
+    private AppCompatTextView launchRocketText;
     private AppCompatImageView launchIcon;
     private AppCompatTextView launchDetailsText;
 
@@ -30,10 +31,11 @@ public class LaunchDetailFragment extends Fragment {
         View v = inflater.inflate(R.layout.launch_detail, container, false);
 
         this.launchNameText = v.findViewById(R.id.launch_detail_name);
-        this.launchFlightNumberText = v.findViewById(R.id.launch_detail_flight_no);
-        this.launchDatetimeText = v.findViewById(R.id.launch_detail_datetime);
+        this.launchFlightNumberText = v.findViewById(R.id.launch_detail_flight_no_value);
+        this.launchDatetimeText = v.findViewById(R.id.launch_detail_datetime_value);
         this.launchIcon = v.findViewById(R.id.launch_detail_icon);
         this.launchDetailsText = v.findViewById(R.id.launch_detail_details);
+        this.launchRocketText = v.findViewById(R.id.launch_detail_rocket_value);
 
         Launch launch = getArguments().getParcelable("Launch");
 
@@ -44,7 +46,7 @@ public class LaunchDetailFragment extends Fragment {
 
     public void bind(Launch launch) {
         launchNameText.setText(launch.getName());
-        launchFlightNumberText.setText("Flight no: " + launch.getFlightNumber());
+        launchFlightNumberText.setText(String.valueOf(launch.getFlightNumber()));
         launchDatetimeText.setText(DateTimeConverter.getFormattedUnixDateTime(launch.getDateTimeUnix()));
         if(!launch.getDetail().equals("null")) {
             launchDetailsText.setText(launch.getDetail());
@@ -56,5 +58,6 @@ public class LaunchDetailFragment extends Fragment {
                     .load(launch.getPatchLinkSmall())
                     .into(launchIcon);
         }
+        launchRocketText.setText(launch.getRocket().getName());
     }
 }
