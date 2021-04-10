@@ -8,6 +8,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.example.mobdevspacexapp.data.model.Company;
 import com.example.mobdevspacexapp.data.model.Launch;
 import com.example.mobdevspacexapp.data.model.Rocket;
 import com.example.mobdevspacexapp.net.VolleyController;
@@ -40,8 +41,23 @@ public class SpaceXDataService {
     }
 
     public void getUpcomingLaunches(final LaunchesListener launchesListener) {
-        final List<Launch> launches = new ArrayList<>();
         String url = buildUrlString("/launches/upcoming");
+        getLaunches(url, launchesListener);
+    }
+
+    public void getPastLaunches(final LaunchesListener launchesListener) {
+        String url = buildUrlString("/launches/past");
+        getLaunches(url, launchesListener);
+    }
+
+    public void getAllLaunches(final LaunchesListener launchesListener) {
+        String url = buildUrlString("/launches");
+        getLaunches(url, launchesListener);
+    }
+
+
+    public void getLaunches(final String url, final LaunchesListener launchesListener) {
+        final List<Launch> launches = new ArrayList<>();
 
         JsonArrayRequest arrayRequest = new JsonArrayRequest(
                 Request.Method.GET,
@@ -151,5 +167,54 @@ public class SpaceXDataService {
             e.printStackTrace();
         }
         return rocket;
+    }
+
+    public interface CompanyListener {
+        void onError(String message);
+
+        void onResponse(Company response);
+    }
+
+    public void getCompanyInfo(final CompanyListener companyListener) {
+        String url = buildUrlString("/company");
+        JsonObjectRequest arrayRequest = new JsonObjectRequest(
+                Request.Method.GET,
+                url,
+                null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        companyListener.onResponse(getCompanyInfoFromJson(response));
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        companyListener.onError("Unable to get company data.");
+                    }
+                }
+        );
+        VolleyController.getInstance(context).addToRequestQueue(arrayRequest);
+    }
+
+    public static Company getCompanyInfoFromJson(JSONObject response) {
+        Company company = null;
+        try {
+            String name = response.getString("name");
+            String description = response.getString("summary");
+            String founder = response.getString("founder");
+            int foundedYear = response.getInt("founded");
+            int employees = response.getInt("employees");
+            int vehicles = response.getInt("vehicles");
+            int launchSites = response.getInt("launch_sites");
+            int testSites = response.getInt("test_sites");
+            String websiteLink = response.getJSONObject("links").getString("website");
+            String flickrLink = response.getJSONObject("links").getString("flickr");
+            String twitterLink = response.getJSONObject("links").getString("twitter");
+            company = new Company(name, description, founder, foundedYear, employees, vehicles, launchSites, testSites, websiteLink, flickrLink, twitterLink);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return company;
     }
 }

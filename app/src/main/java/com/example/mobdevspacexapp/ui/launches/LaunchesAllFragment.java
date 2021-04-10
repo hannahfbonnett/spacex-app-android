@@ -11,24 +11,18 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.android.volley.Request;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonArrayRequest;
 import com.example.mobdevspacexapp.R;
-import com.example.mobdevspacexapp.data.api.ApiUtil;
+import com.example.mobdevspacexapp.data.api.SpaceXDataService;
 import com.example.mobdevspacexapp.data.model.Launch;
-import com.example.mobdevspacexapp.net.VolleyController;
 
-import org.json.JSONArray;
-
-import java.util.ArrayList;
+import java.util.List;
 
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
 public class LaunchesAllFragment extends Fragment {
 
+    private SpaceXDataService spaceXDataService;
     private RecyclerView launchListView;
 
     @Override
@@ -38,41 +32,29 @@ public class LaunchesAllFragment extends Fragment {
         final Context context = getContext();
         if (context == null) return v;
 
+        spaceXDataService = new SpaceXDataService(context);
 
         launchListView = v.findViewById(R.id.launch_list_view);
         LinearLayoutManager launchesLayoutManager = new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false);
         launchListView.setLayoutManager(launchesLayoutManager);
 
-        String upcomingLaunchesUrl = ApiUtil.buildUrlString("/launches");
-
-        fetchDataAndUpdateList(
-                upcomingLaunchesUrl,
-                new Response.Listener<JSONArray>() {
-                    @Override
-                    public void onResponse(JSONArray response) {
-                        ArrayList<Launch> allLaunches = ApiUtil.getLaunchesFromJson(response);
-
-                        LaunchListViewAdapter adapter = new LaunchListViewAdapter(context, allLaunches);
-                        launchListView.setAdapter(adapter);
-                    }
-                });
+        fetchLaunchesAndUpdateList(context);
 
         return v;
     }
 
-    private void fetchDataAndUpdateList(String url, Response.Listener<JSONArray> onResponse){
-        JsonArrayRequest exampleRequest = new JsonArrayRequest(
-                Request.Method.GET, // .POST, .DELETE, .PUT...
-                url,
-                null,
-                onResponse,
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Log.d("ERROR", error.getMessage());
-                    }
-                }
-        );
-        VolleyController.getInstance(getActivity().getApplicationContext()).addToRequestQueue(exampleRequest);
+    private void fetchLaunchesAndUpdateList(final Context context){
+        spaceXDataService.getAllLaunches(new SpaceXDataService.LaunchesListener() {
+            @Override
+            public void onError(String message) {
+                Log.d("ERROR", message);
+            }
+
+            @Override
+            public void onResponse(List<Launch> response) {
+                LaunchListViewAdapter adapter = new LaunchListViewAdapter(context, response);
+                launchListView.setAdapter(adapter);
+            }
+        });
     }
 }
