@@ -20,6 +20,7 @@ import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
+    private static final int DEFAULT_DRAWER_ITEM = R.id.nav_drawer_launches;
     private DrawerLayout navDrawer;
     private NavigationView navView;
 
@@ -28,10 +29,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_drawer);
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
-        Toolbar toolbar = (Toolbar) this.findViewById(R.id.toolbar);
+        Toolbar toolbar = this.findViewById(R.id.toolbar);
         this.setSupportActionBar(toolbar);
 
-        this.navDrawer = (DrawerLayout) this.findViewById(R.id.drawer_layout);
+        this.navDrawer = this.findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this,
                 this.navDrawer,
@@ -42,10 +43,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         this.navDrawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        this.navView = (NavigationView) findViewById(R.id.nav_view);
+        this.navView = findViewById(R.id.nav_view);
         this.navView.setNavigationItemSelectedListener(this);
 
-        changeInternalFragment(new LaunchesTabsFragment(), R.id.fragmentContainer);
+        if (savedInstanceState == null) {
+            this.navView.setCheckedItem(DEFAULT_DRAWER_ITEM);
+            this.navView.getMenu().performIdentifierAction(DEFAULT_DRAWER_ITEM, 0);
+        }
     }
 
     private void changeInternalFragment(Fragment fragment, int fragmentContainer){
@@ -62,6 +66,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         int id = item.getItemId();
 
         switch (id){
+            case R.id.nav_drawer_launches:
+                changeInternalFragment(new LaunchesTabsFragment(), R.id.fragmentContainer);
+                break;
             case R.id.nav_drawer_settings:
                 changeInternalFragment(new SettingsFragment(), R.id.fragmentContainer);
                 break;
@@ -75,6 +82,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return true;
     }
 
+    @Override
+    public void onBackPressed() {
+        if (navDrawer != null && navDrawer.isDrawerOpen(GravityCompat.START))
+            navDrawer.closeDrawer(GravityCompat.START);
+        else
+            super.onBackPressed();
+    }
 
 
 
