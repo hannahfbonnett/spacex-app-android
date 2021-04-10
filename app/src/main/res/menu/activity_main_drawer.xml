@@ -6,6 +6,10 @@
 
     <group android:checkableBehavior="single">
         <item
+            android:id="@+id/nav_drawer_launches"
+            android:icon="@drawable/ic_rocket_launch"
+            android:title="@string/drawer_launches_title" />
+        <item
             android:id="@+id/nav_drawer_company"
             android:icon="@drawable/ic_info"
             android:title="@string/drawer_company_title" />
