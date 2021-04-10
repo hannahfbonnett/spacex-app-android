@@ -21,6 +21,7 @@ public class LaunchDetailFragment extends Fragment {
     private AppCompatTextView launchNameText;
     private AppCompatTextView launchFlightNumberText;
     private AppCompatTextView launchDatetimeText;
+    private AppCompatTextView launchRocketText;
     private AppCompatImageView launchIcon;
     private AppCompatTextView launchDetailsText;
 
@@ -34,6 +35,7 @@ public class LaunchDetailFragment extends Fragment {
         this.launchDatetimeText = v.findViewById(R.id.launch_detail_datetime);
         this.launchIcon = v.findViewById(R.id.launch_detail_icon);
         this.launchDetailsText = v.findViewById(R.id.launch_detail_details);
+        this.launchRocketText = v.findViewById(R.id.launch_detail_rocket);
 
         Launch launch = getArguments().getParcelable("Launch");
 
@@ -56,5 +58,6 @@ public class LaunchDetailFragment extends Fragment {
                     .load(launch.getPatchLinkSmall())
                     .into(launchIcon);
         }
+        launchRocketText.setText(launch.getRocket().getName());
     }
 }

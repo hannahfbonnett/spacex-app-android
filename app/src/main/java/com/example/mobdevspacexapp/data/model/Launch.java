@@ -3,13 +3,15 @@ package com.example.mobdevspacexapp.data.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import java.util.Optional;
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @AllArgsConstructor
+@NoArgsConstructor
 @Getter
+@Setter
 public class Launch implements Parcelable {
     private int flightNumber;
     private String name;
@@ -17,8 +19,10 @@ public class Launch implements Parcelable {
     private String dateUtc;
     private String patchLinkSmall;
     private Long dateTimeUnix;
+    private Rocket rocket;
 
     protected Launch(Parcel in) {
+        rocket = (Rocket) in.readParcelable(Rocket.class.getClassLoader());
         flightNumber = in.readInt();
         name = in.readString();
         detail = in.readString();
@@ -46,6 +50,7 @@ public class Launch implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
+        dest.writeParcelable(rocket, flags);
         dest.writeInt(flightNumber);
         dest.writeString(name);
         dest.writeString(detail);
