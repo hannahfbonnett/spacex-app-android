@@ -52,7 +52,6 @@ public class LaunchListViewAdapter extends RecyclerView.Adapter<LaunchListViewAd
 
     protected class LaunchListViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-
         private AppCompatTextView launchNameText;
         private AppCompatTextView launchFlightNumberText;
         private AppCompatTextView launchDatetimeText;
