@@ -1,0 +1,214 @@
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:layout_marginBottom="@dimen/standard_margin">
+
+        <TextView
+            android:id="@+id/rocket_detail_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginLeft="@dimen/standard_margin"
+            android:layout_marginRight="@dimen/standard_margin"
+            android:text="Rocket name"
+            android:textSize="@dimen/detail_title_size"
+            android:layout_gravity="start"/>
+
+        <ImageView
+            android:id="@+id/rocket_detail_image"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:layout_marginTop="@dimen/standard_margin"
+            android:layout_marginBottom="@dimen/standard_margin"
+            app:srcCompat="@drawable/ic_rocket_launch" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="@dimen/standard_margin"
+            android:layout_marginRight="@dimen/standard_margin">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="50"
+                android:id="@+id/rocket_detail_active"
+                android:textAlignment="textStart"
+                android:layout_gravity="start"
+                android:textSize="@dimen/detail_text_size"
+                android:text="Active"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="50"
+                android:id="@+id/rocket_detail_active_value"
+                android:textAlignment="textEnd"
+                android:layout_gravity="end"
+                android:textSize="@dimen/detail_text_size"
+                android:text="value"/>
+
+        </LinearLayout>
+
+        <include layout="@layout/info_divider" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="@dimen/standard_margin"
+            android:layout_marginRight="@dimen/standard_margin">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="50"
+                android:id="@+id/rocket_detail_height"
+                android:textAlignment="textStart"
+                android:layout_gravity="start"
+                android:textSize="@dimen/detail_text_size"
+                android:text="Height"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="50"
+                android:id="@+id/rocket_detail_height_value"
+                android:textAlignment="textEnd"
+                android:layout_gravity="end"
+                android:textSize="@dimen/detail_text_size"
+                android:text="value"/>
+
+        </LinearLayout>
+
+        <include layout="@layout/info_divider" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="@dimen/standard_margin"
+            android:layout_marginRight="@dimen/standard_margin">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="50"
+                android:id="@+id/rocket_detail_diameter"
+                android:textAlignment="textStart"
+                android:layout_gravity="start"
+                android:textSize="@dimen/detail_text_size"
+                android:text="Diameter"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="50"
+                android:id="@+id/rocket_detail_diameter_value"
+                android:textAlignment="textEnd"
+                android:layout_gravity="end"
+                android:textSize="@dimen/detail_text_size"
+                android:text="value"/>
+
+        </LinearLayout>
+
+        <include layout="@layout/info_divider" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="@dimen/standard_margin"
+            android:layout_marginRight="@dimen/standard_margin">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="50"
+                android:id="@+id/rocket_detail_mass"
+                android:textAlignment="textStart"
+                android:layout_gravity="start"
+                android:textSize="@dimen/detail_text_size"
+                android:text="Mass"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="50"
+                android:id="@+id/rocket_detail_mass_value"
+                android:textAlignment="textEnd"
+                android:layout_gravity="end"
+                android:textSize="@dimen/detail_text_size"
+                android:text="value"/>
+
+        </LinearLayout>
+
+        <include layout="@layout/info_divider" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="@dimen/standard_margin"
+            android:layout_marginRight="@dimen/standard_margin">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="50"
+                android:id="@+id/rocket_detail_first_flight_date"
+                android:textAlignment="textStart"
+                android:layout_gravity="start"
+                android:textSize="@dimen/detail_text_size"
+                android:text="First flight"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="50"
+                android:id="@+id/rocket_detail_first_flight_date_value"
+                android:textAlignment="textEnd"
+                android:layout_gravity="end"
+                android:textSize="@dimen/detail_text_size"
+                android:text="value"/>
+
+        </LinearLayout>
+
+
+
+        <TextView
+            android:id="@+id/rocket_detail_details_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="26dp"
+            android:layout_marginLeft="@dimen/standard_margin"
+            android:layout_marginRight="@dimen/standard_margin"
+            android:text="Details"
+            android:textSize="@dimen/detail_subtitle_size"
+            android:layout_gravity="start"/>
+
+        <TextView
+            android:id="@+id/rocket_detail_details"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/standard_margin"
+            android:layout_marginLeft="@dimen/standard_margin"
+            android:layout_marginRight="@dimen/standard_margin"
+            android:layout_marginBottom="@dimen/standard_margin"
+            android:textSize="@dimen/detail_text_size"
+            android:text="description here"/>
+
+
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</ScrollView>

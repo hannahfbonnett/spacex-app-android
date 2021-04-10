@@ -34,6 +34,7 @@ public class SpaceXDataService {
         return BASE_API_URL + endpoint;
     }
 
+    //Ref: https://stackoverflow.com/questions/33535435/how-to-create-a-proper-volley-listener-for-cross-class-volley-method-calling
     public interface LaunchesListener {
         void onError(String message);
 
@@ -114,6 +115,7 @@ public class SpaceXDataService {
         return launch;
     }
 
+    //Ref: https://stackoverflow.com/questions/33535435/how-to-create-a-proper-volley-listener-for-cross-class-volley-method-calling
     public interface RocketListener {
         void onError(String message);
 
@@ -169,6 +171,7 @@ public class SpaceXDataService {
         return rocket;
     }
 
+    //Ref: https://stackoverflow.com/questions/33535435/how-to-create-a-proper-volley-listener-for-cross-class-volley-method-calling
     public interface CompanyListener {
         void onError(String message);
 
