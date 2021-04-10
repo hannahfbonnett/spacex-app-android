@@ -19,14 +19,14 @@ import com.example.mobdevspacexapp.data.model.Launch;
 import com.example.mobdevspacexapp.util.DateTimeConverter;
 import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class LaunchListViewAdapter extends RecyclerView.Adapter<LaunchListViewAdapter.LaunchListViewHolder> {
 
     private Context context;
-    private ArrayList<Launch> launches;
+    private List<Launch> launches;
 
-    public LaunchListViewAdapter(Context context, ArrayList<Launch> launches) {
+    public LaunchListViewAdapter(Context context, List<Launch> launches) {
         this.context = context;
         this.launches = launches;
     }
