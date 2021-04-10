@@ -16,7 +16,7 @@ import lombok.Getter;
 public class Rocket implements Parcelable {
 
     private String name;
-    private List<String> imageLinks;
+    private String imageLink;
     private String description;
     private boolean isActive;
     private float heightMeters;
@@ -26,7 +26,7 @@ public class Rocket implements Parcelable {
 
     protected Rocket(Parcel in) {
         name = in.readString();
-        imageLinks = in.createStringArrayList();
+        imageLink = in.readString();
         description = in.readString();
         isActive = in.readByte() != 0;
         heightMeters = in.readFloat();
@@ -56,7 +56,7 @@ public class Rocket implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(name);
-        dest.writeStringList(imageLinks);
+        dest.writeString(imageLink);
         dest.writeString(description);
         dest.writeBoolean(isActive);
         dest.writeFloat(heightMeters);

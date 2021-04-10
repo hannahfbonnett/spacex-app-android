@@ -8,11 +8,13 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatImageView;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.fragment.app.Fragment;
 
 import com.example.mobdevspacexapp.R;
 import com.example.mobdevspacexapp.data.model.Rocket;
+import com.squareup.picasso.Picasso;
 
 public class RocketDetailFragment extends Fragment {
 
@@ -23,6 +25,7 @@ public class RocketDetailFragment extends Fragment {
     private AppCompatTextView diameterText;
     private AppCompatTextView massText;
     private AppCompatTextView firstFlightDateText;
+    private AppCompatImageView rocketImage;
 
     @Nullable
     @Override
@@ -38,6 +41,7 @@ public class RocketDetailFragment extends Fragment {
         this.diameterText = v.findViewById(R.id.rocket_detail_diameter_value);
         this.massText = v.findViewById(R.id.rocket_detail_mass_value);
         this.firstFlightDateText = v.findViewById(R.id.rocket_detail_first_flight_date_value);
+        this.rocketImage = v.findViewById(R.id.rocket_detail_image);
 
         Rocket rocket = getArguments().getParcelable("Rocket");
         bind(rocket);
@@ -53,6 +57,11 @@ public class RocketDetailFragment extends Fragment {
         diameterText.setText(String.valueOf(rocket.getDiameterMeters()));
         massText.setText(String.valueOf(rocket.getMassLbs()));
         firstFlightDateText.setText(rocket.getFirstFlightDate());
+        if(!rocket.getImageLink().equals("null")) {
+            Picasso.get()
+                    .load(rocket.getImageLink())
+                    .into(rocketImage);
+        }
     }
 
 

@@ -151,19 +151,13 @@ public class SpaceXDataService {
         try {
             String name = response.getString("name");
             String description = response.getString("description");
-            List<String> imageLinks = new ArrayList<>();
-            JSONArray imageArray = response.getJSONArray("flickr_images");
-            int numberOfImages = imageArray.length();
-            for(int i = 0; i < numberOfImages; i++) {
-                String imageLink = imageArray.get(i).toString();
-                imageLinks.add(imageLink);
-            }
+            String imageLink = response.getJSONArray("flickr_images").get(0).toString();
             boolean isActive = response.getBoolean("active");
             float heightMeters = response.getJSONObject("height").getLong("meters");
             float diameterMeters = response.getJSONObject("diameter").getLong("meters");
             long massLbs = response.getJSONObject("mass").getLong("lb");
             String firstFlightDate = response.getString("first_flight");
-            rocket = new Rocket(name, imageLinks, description, isActive, heightMeters, diameterMeters, massLbs, firstFlightDate);
+            rocket = new Rocket(name, imageLink, description, isActive, heightMeters, diameterMeters, massLbs, firstFlightDate);
 
         } catch (JSONException e) {
             e.printStackTrace();
