@@ -248,7 +248,9 @@
                 android:textAlignment="textEnd"
                 android:layout_gravity="end"
                 android:textSize="@dimen/detail_text_size"
-                android:text="link"/>
+                android:text="link"
+                android:drawableEnd="@drawable/ic_chevron_right"
+                android:drawableRight="@drawable/ic_chevron_right"/>
 
         </LinearLayout>
 
@@ -277,7 +279,9 @@
                 android:textAlignment="textEnd"
                 android:layout_gravity="end"
                 android:textSize="@dimen/detail_text_size"
-                android:text="link"/>
+                android:text="link"
+                android:drawableEnd="@drawable/ic_chevron_right"
+                android:drawableRight="@drawable/ic_chevron_right"/>
 
         </LinearLayout>
 
@@ -306,7 +310,9 @@
                 android:textAlignment="textEnd"
                 android:layout_gravity="end"
                 android:textSize="@dimen/detail_text_size"
-                android:text="link"/>
+                android:text="link"
+                android:drawableEnd="@drawable/ic_chevron_right"
+                android:drawableRight="@drawable/ic_chevron_right"/>
 
         </LinearLayout>
 
