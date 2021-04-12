@@ -58,6 +58,9 @@ public class LaunchDetailFragment extends Fragment {
             }
         });
 
+        String value = getActivity().getSharedPreferences("settings", Context.MODE_PRIVATE).getString("settings_length_key", "default");
+        System.out.println(value);
+
         return v;
     }
 

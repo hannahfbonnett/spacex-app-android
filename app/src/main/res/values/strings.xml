@@ -8,4 +8,7 @@
     <string name="drawer_settings_title">Settings</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="settings_length_key">settings_length_key</string>
+
 </resources>

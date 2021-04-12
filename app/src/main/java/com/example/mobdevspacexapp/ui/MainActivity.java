@@ -8,7 +8,10 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.preference.Preference;
+import androidx.preference.PreferenceManager;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 
@@ -17,6 +20,8 @@ import com.example.mobdevspacexapp.ui.company.CompanyFragment;
 import com.example.mobdevspacexapp.ui.launches.LaunchesTabsFragment;
 import com.example.mobdevspacexapp.ui.settings.SettingsFragment;
 import com.google.android.material.navigation.NavigationView;
+
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -27,6 +32,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        System.out.println("MainActivity - onCreate()");
         setContentView(R.layout.activity_main_drawer);
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
         Toolbar toolbar = this.findViewById(R.id.toolbar);
@@ -49,6 +55,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (savedInstanceState == null) {
             this.navView.setCheckedItem(DEFAULT_DRAWER_ITEM);
             this.navView.getMenu().performIdentifierAction(DEFAULT_DRAWER_ITEM, 0);
+        }
+
+        SharedPreferences prefs = getSharedPreferences("settings", MODE_PRIVATE);
+        prefs.edit().clear().commit(); //todo - remove this
+
+        if (!prefs.contains("settings_length_key")) {
+            SharedPreferences.Editor editor = prefs.edit();
+            editor.putString("settings_length_key", "Meters");
+            editor.apply();
         }
     }
 

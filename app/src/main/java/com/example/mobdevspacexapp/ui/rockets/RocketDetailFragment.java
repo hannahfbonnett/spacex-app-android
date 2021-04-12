@@ -1,5 +1,6 @@
 package com.example.mobdevspacexapp.ui.rockets;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -53,8 +54,13 @@ public class RocketDetailFragment extends Fragment {
         rocketNameText.setText(rocket.getName());
         descriptionText.setText(rocket.getDescription());
         activeText.setText(String.valueOf(rocket.isActive()));
-        heightText.setText(String.valueOf(rocket.getHeightMeters()));
-        diameterText.setText(String.valueOf(rocket.getDiameterMeters()));
+        if(getPreferredLengthUnit().equalsIgnoreCase("meters")) {
+            heightText.setText(String.valueOf(rocket.getHeightMeters()) + " m");
+            diameterText.setText(String.valueOf(rocket.getDiameterMeters()) + " m");
+        } else if (getPreferredLengthUnit().equalsIgnoreCase("feet")) {
+            heightText.setText(String.valueOf(rocket.getHeightFeet()) + " ft");
+            diameterText.setText(String.valueOf(rocket.getDiameterFeet()) + " ft");
+        }
         massText.setText(String.valueOf(rocket.getMassLbs()));
         firstFlightDateText.setText(rocket.getFirstFlightDate());
         if(!rocket.getImageLink().equals("null")) {
@@ -62,6 +68,12 @@ public class RocketDetailFragment extends Fragment {
                     .load(rocket.getImageLink())
                     .into(rocketImage);
         }
+    }
+
+    private String getPreferredLengthUnit() {
+        return getContext()
+                .getSharedPreferences("settings", Context.MODE_PRIVATE)
+                .getString("settings_length_key", "Meters");
     }
 
 

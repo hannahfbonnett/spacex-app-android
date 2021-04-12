@@ -6,13 +6,15 @@ import android.os.Parcelable;
 
 import androidx.annotation.RequiresApi;
 
-import java.util.List;
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @AllArgsConstructor
+@NoArgsConstructor
 @Getter
+@Setter
 public class Rocket implements Parcelable {
 
     private String name;
@@ -20,8 +22,11 @@ public class Rocket implements Parcelable {
     private String description;
     private boolean isActive;
     private float heightMeters;
+    private float heightFeet;
     private float diameterMeters;
+    private float diameterFeet;
     private long massLbs;
+    private long massKgs;
     private String firstFlightDate;
 
     protected Rocket(Parcel in) {
@@ -30,8 +35,11 @@ public class Rocket implements Parcelable {
         description = in.readString();
         isActive = in.readByte() != 0;
         heightMeters = in.readFloat();
+        heightFeet = in.readFloat();
         diameterMeters = in.readFloat();
+        diameterFeet = in.readFloat();
         massLbs = in.readLong();
+        massKgs = in.readLong();
         firstFlightDate = in.readString();
     }
 
@@ -60,8 +68,11 @@ public class Rocket implements Parcelable {
         dest.writeString(description);
         dest.writeBoolean(isActive);
         dest.writeFloat(heightMeters);
+        dest.writeFloat(heightFeet);
         dest.writeFloat(diameterMeters);
+        dest.writeFloat(diameterFeet);
         dest.writeLong(massLbs);
+        dest.writeLong(massKgs);
         dest.writeString(firstFlightDate);
     }
 }
