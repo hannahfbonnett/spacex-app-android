@@ -18,4 +18,7 @@
     <string name="weight_amount_pounds">%1$d lbs</string>
     <string name="weight_amount_kilograms">%1$d kgs</string>
 
+    <string name="rocket_active_true">Yes</string>
+    <string name="rocket_active_false">No</string>
+
 </resources>

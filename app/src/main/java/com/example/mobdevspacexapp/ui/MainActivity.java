@@ -65,6 +65,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             editor.putString("settings_length_key", "Meters");
             editor.apply();
         }
+
+        if (!prefs.contains("settings_weight_key")) {
+            SharedPreferences.Editor editor = prefs.edit();
+            editor.putString("settings_weight_key", "Pounds");
+            editor.apply();
+        }
     }
 
     private void changeInternalFragment(Fragment fragment, int fragmentContainer){

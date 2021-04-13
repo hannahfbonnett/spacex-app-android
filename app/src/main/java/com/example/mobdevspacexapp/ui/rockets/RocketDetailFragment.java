@@ -53,7 +53,11 @@ public class RocketDetailFragment extends Fragment {
     private void bind(Rocket rocket) {
         rocketNameText.setText(rocket.getName());
         descriptionText.setText(rocket.getDescription());
-        activeText.setText(String.valueOf(rocket.isActive()));
+        if(rocket.isActive()) {
+            activeText.setText(getString(R.string.rocket_active_true));
+        } else {
+            activeText.setText(getString(R.string.rocket_active_false));
+        }
         if(getPreferredLengthUnit().equalsIgnoreCase("meters")) {
             heightText.setText(getString(R.string.length_amount_meters, rocket.getHeightMeters()));
             diameterText.setText(getString(R.string.length_amount_meters, rocket.getDiameterMeters()));
