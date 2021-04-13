@@ -35,26 +35,40 @@ public class SpaceXDataService {
         this.context = context;
     }
 
+    /*
+        Build a url string using the base url and provided endpoint.
+     */
     public String buildUrlString(String endpoint) {
         return BASE_API_URL + endpoint;
     }
 
+    /*
+        Get all upcoming launches.
+     */
     public void getUpcomingLaunches(final LaunchesResponseListener launchesListener) {
         String url = buildUrlString(LAUNCHES_UPCOMING_API_URL);
         getLaunches(url, launchesListener);
     }
 
+    /*
+        Get all past launches.
+     */
     public void getPastLaunches(final LaunchesResponseListener launchesListener) {
         String url = buildUrlString(LAUNCHES_PAST_API_URL);
         getLaunches(url, launchesListener);
     }
 
+    /*
+        Get all launches.
+     */
     public void getAllLaunches(final LaunchesResponseListener launchesListener) {
         String url = buildUrlString(LAUNCHES_ALL_API_URL);
         getLaunches(url, launchesListener);
     }
 
-
+    /*
+        Get all launches from the provided url.
+     */
     public void getLaunches(final String url, final LaunchesResponseListener launchesListener) {
         final List<Launch> launches = new ArrayList<>();
 
@@ -98,6 +112,9 @@ public class SpaceXDataService {
         VolleyController.getInstance(context).addToRequestQueue(arrayRequest);
     }
 
+    /*
+        Get a launch object by parsing the provided JSONObject.
+     */
     public Launch getLaunchFromJson(JSONObject jsonObject) {
         Launch launch = new Launch();
         try {
@@ -113,6 +130,9 @@ public class SpaceXDataService {
         return launch;
     }
 
+    /*
+        Get a Rocket using an ID.
+     */
     public void getRocketById(final String id, final RocketResponseListener rocketListener) {
         String url = buildUrlString(ROCKET_ONE_API_URL + id);
 
@@ -137,6 +157,9 @@ public class SpaceXDataService {
 
     }
 
+    /*
+        Get a Rocket object by parsing the provided JSONObject.
+     */
     public Rocket getRocketFromJson(JSONObject response) {
         Rocket rocket = new Rocket();
         try {
@@ -157,7 +180,9 @@ public class SpaceXDataService {
         return rocket;
     }
 
-
+    /*
+        Get the company information.
+     */
     public void getCompanyInfo(final CompanyResponseListener companyListener) {
         String url = buildUrlString(COMPANY_API_URL);
         JsonObjectRequest arrayRequest = new JsonObjectRequest(
@@ -180,6 +205,9 @@ public class SpaceXDataService {
         VolleyController.getInstance(context).addToRequestQueue(arrayRequest);
     }
 
+    /*
+        Get a Company object by parsing the provided JSONObject.
+     */
     public static Company getCompanyInfoFromJson(JSONObject response) {
         Company company = null;
         try {
