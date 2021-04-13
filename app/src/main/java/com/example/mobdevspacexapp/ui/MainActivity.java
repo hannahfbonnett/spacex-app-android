@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             this.navView.getMenu().performIdentifierAction(DEFAULT_DRAWER_ITEM, 0);
         }
 
-        SharedPreferences prefs = getSharedPreferences("settings", MODE_PRIVATE);
+        SharedPreferences prefs = getPreferences(MODE_PRIVATE);
         //prefs.edit().clear().commit(); //todo - remove this
 
         if (!prefs.contains("settings_length_key")) {

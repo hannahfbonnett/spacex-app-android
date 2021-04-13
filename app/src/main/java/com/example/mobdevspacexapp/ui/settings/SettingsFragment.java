@@ -22,7 +22,7 @@ public class SettingsFragment extends PreferenceFragmentCompat {
         ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Settings");
         setPreferencesFromResource(R.xml.settings_preference, rootKey);
 
-        this.sharedPreferences = this.getActivity().getSharedPreferences("settings", MODE_PRIVATE);
+        this.sharedPreferences = this.getActivity().getPreferences(MODE_PRIVATE);
 
         ListPreference lengthListPreference = findPreference("settings_length_key");
         lengthListPreference.setValue(sharedPreferences.getString(lengthListPreference.getKey(), ""));
