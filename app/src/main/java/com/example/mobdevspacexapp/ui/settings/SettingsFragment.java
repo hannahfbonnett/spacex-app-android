@@ -35,6 +35,9 @@ public class SettingsFragment extends PreferenceFragmentCompat implements Prefer
         }
     }
 
+    /*
+        Update the shared preferences when a preference has been changed.
+     */
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         sharedPreferences.edit().putString(preference.getKey(), newValue.toString()).apply();

@@ -8,12 +8,9 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatImageView;
 import androidx.appcompat.widget.AppCompatTextView;
-import androidx.appcompat.widget.Toolbar;
-import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
@@ -53,22 +50,22 @@ public class LaunchDetailFragment extends Fragment {
 
         final Launch launch = getArguments().getParcelable("Launch");
 
-        bind(launch);
-
-        launchRocketText.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                viewRocketDetails(context, launch.getRocket());
-            }
-        });
-
-        String value = getActivity().getSharedPreferences("settings", Context.MODE_PRIVATE).getString("settings_length_key", "default");
-        System.out.println(value);
-
+        if(launch != null) {
+            bind(launch);
+            launchRocketText.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    viewRocketDetails(context, launch.getRocket());
+                }
+            });
+        }
         ((HideShowIconInterface) getActivity()).showBackIcon();
         return v;
     }
 
+    /*
+        Set the text and image using the launch attributes.
+     */
     private void bind(Launch launch) {
         launchNameText.setText(launch.getName());
         launchFlightNumberText.setText(String.valueOf(launch.getFlightNumber()));
@@ -76,7 +73,7 @@ public class LaunchDetailFragment extends Fragment {
         if(!launch.getDetail().equals("null")) {
             launchDetailsText.setText(launch.getDetail());
         } else {
-            launchDetailsText.setText("Awaiting more information from SpaceX.");
+            launchDetailsText.setText(getString(R.string.launch_details_null));
         }
         if(!launch.getPatchLinkSmall().equals("null")) {
             Picasso.get()
@@ -86,9 +83,10 @@ public class LaunchDetailFragment extends Fragment {
         launchRocketText.setText(launch.getRocket().getName());
     }
 
-
+    /*
+        View rocket details when rocket name is clicked on.
+     */
     private void viewRocketDetails(Context context, Rocket rocket) {
-        System.out.println("Clicked on rocket: " + rocket.getName());
         FragmentManager fragmentManager = ((AppCompatActivity)context).getSupportFragmentManager();
         RocketDetailFragment launchDetailFragment = new RocketDetailFragment();
         Bundle bundle = new Bundle();

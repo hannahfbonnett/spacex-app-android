@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mobdevspacexapp.R;
+import com.example.mobdevspacexapp.data.api.LaunchesResponseListener;
 import com.example.mobdevspacexapp.data.api.SpaceXDataService;
 import com.example.mobdevspacexapp.data.model.Launch;
 
@@ -43,8 +44,12 @@ public class LaunchesUpcomingFragment extends Fragment {
         return v;
     }
 
+    /*
+        Get upcoming launches using the SpaceX api.
+        Use the response to send to the view adapter.
+     */
     private void fetchLaunchesAndUpdateList(final Context context){
-        spaceXDataService.getUpcomingLaunches(new SpaceXDataService.LaunchesListener() {
+        spaceXDataService.getUpcomingLaunches(new LaunchesResponseListener() {
             @Override
             public void onError(String message) {
                 Log.d("ERROR", message);

@@ -38,12 +38,20 @@ public class LaunchListViewAdapter extends RecyclerView.Adapter<LaunchListViewAd
         return new LaunchListViewHolder(listItemView);
     }
 
+    /*
+        Populate a particular row with particular data using
+        the row (holder) and the position of the row.
+     */
     @Override
     public void onBindViewHolder(@NonNull LaunchListViewAdapter.LaunchListViewHolder holder, int position) {
         Launch launch = launches.get(position);
         holder.bind(launch);
     }
 
+    /*
+        Get the number of items (rows) that will be displayed using the list of
+        launches that was provided in the constructor.
+     */
     @Override
     public int getItemCount() {
         return (launches == null ? 0 : launches.size());
@@ -52,6 +60,7 @@ public class LaunchListViewAdapter extends RecyclerView.Adapter<LaunchListViewAd
 
     protected class LaunchListViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
+        Context context;
         private AppCompatTextView launchNameText;
         private AppCompatTextView launchFlightNumberText;
         private AppCompatTextView launchDatetimeText;
@@ -59,18 +68,21 @@ public class LaunchListViewAdapter extends RecyclerView.Adapter<LaunchListViewAd
 
         LaunchListViewHolder(View itemView) {
             super(itemView);
-            this.launchNameText = (AppCompatTextView) itemView.findViewById(R.id.launch_list_item_name);
-            this.launchFlightNumberText = (AppCompatTextView) itemView.findViewById(R.id.launch_list_item_flight_number);
-            this.launchDatetimeText = (AppCompatTextView) itemView.findViewById(R.id.launch_list_item_datetime);
+            context = itemView.getContext();
+            this.launchNameText = itemView.findViewById(R.id.launch_list_item_name);
+            this.launchFlightNumberText = itemView.findViewById(R.id.launch_list_item_flight_number);
+            this.launchDatetimeText = itemView.findViewById(R.id.launch_list_item_datetime);
             this.launchIcon = itemView.findViewById(R.id.launch_list_item_icon);
 
             itemView.setOnClickListener(this);
         }
 
-
+        /*
+            Set the text and image using the launch attributes.
+         */
         public void bind(Launch launch) {
             launchNameText.setText(launch.getName());
-            launchFlightNumberText.setText("Flight no: " + launch.getFlightNumber());
+            launchFlightNumberText.setText(context.getString(R.string.launch_item_flight_number, launch.getFlightNumber()));
             launchDatetimeText.setText(DateTimeConverter.getFormattedUnixDateTime(launch.getDateTimeUnix()));
             if(!launch.getPatchLinkSmall().equals("null")) {
                 Picasso.get()
@@ -79,9 +91,12 @@ public class LaunchListViewAdapter extends RecyclerView.Adapter<LaunchListViewAd
             }
         }
 
+        /*
+            View launch details when a launch item is clicked.
+         */
         @Override
         public void onClick(View view) {
-            int i = this.getAdapterPosition();
+            int i = this.getBindingAdapterPosition();
             Launch selectedLaunch = launches.get(i);
             FragmentManager fragmentManager = ((AppCompatActivity)context).getSupportFragmentManager();
             LaunchDetailFragment launchDetailFragment = new LaunchDetailFragment();
@@ -94,7 +109,6 @@ public class LaunchListViewAdapter extends RecyclerView.Adapter<LaunchListViewAd
                     .commit();
 
         }
-
     }
 
 }

@@ -38,6 +38,8 @@
     <string name="mass_amount_pounds">%1$d lb</string>
     <string name="mass_amount_kilograms">%1$d kg</string>
 
+    <string name="launch_item_flight_number">Flight no: %1d</string>
+
     <string name="rocket_active_true">Yes</string>
     <string name="rocket_active_false">No</string>
 
@@ -45,6 +47,7 @@
     <string name="flight_number">Flight no</string>
     <string name="datetime">Date/Time</string>
     <string name="rocket">Rocket</string>
+    <string name="launch_details_null">Awaiting more information from SpaceX.</string>
 
     <string name="rocket_name_placeholder">Rocket name</string>
     <string name="height">Height</string>

@@ -53,6 +53,9 @@ public class RocketDetailFragment extends Fragment {
         return v;
     }
 
+    /*
+        Set the text and image using the rocket attributes.
+     */
     private void bind(Rocket rocket) {
         rocketNameText.setText(rocket.getName());
         descriptionText.setText(rocket.getDescription());
@@ -68,9 +71,9 @@ public class RocketDetailFragment extends Fragment {
             heightText.setText(getString(R.string.length_amount_feet, rocket.getHeightFeet()));
             diameterText.setText(getString(R.string.length_amount_feet, rocket.getDiameterFeet()));
         }
-        if(getPreferredWeightUnit().equalsIgnoreCase(getString(R.string.mass_pounds))) {
+        if(getPreferredMassUnit().equalsIgnoreCase(getString(R.string.mass_pounds))) {
             massText.setText(getString(R.string.mass_amount_pounds, rocket.getMassLbs()));
-        } else if(getPreferredWeightUnit().equalsIgnoreCase(getString(R.string.mass_kilograms))) {
+        } else if(getPreferredMassUnit().equalsIgnoreCase(getString(R.string.mass_kilograms))) {
             massText.setText(getString(R.string.mass_amount_kilograms, rocket.getMassKgs()));
         }
         firstFlightDateText.setText(rocket.getFirstFlightDate());
@@ -81,18 +84,24 @@ public class RocketDetailFragment extends Fragment {
         }
     }
 
+    /*
+        Get the users' preference measurement unit for length.
+        If not set, use meters.
+     */
     private String getPreferredLengthUnit() {
         return getActivity()
                 .getPreferences(Context.MODE_PRIVATE)
                 .getString(getString(R.string.settings_length_key), getString(R.string.length_default_unit));
     }
 
-    private String getPreferredWeightUnit() {
+    /*
+        Get the users' preference measurement unit for mass.
+        If not set, use meters.
+     */
+    private String getPreferredMassUnit() {
         return getActivity()
                 .getPreferences(Context.MODE_PRIVATE)
                 .getString(getString(R.string.settings_mass_key),getString(R.string.mass_default_unit));
     }
-
-
 
 }

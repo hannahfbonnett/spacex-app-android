@@ -57,6 +57,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         initSharedPreferences();
     }
 
+    /*
+        Set the shared preferences to the default values if
+        the user has not yet set their preferences.
+     */
     private void initSharedPreferences() {
         SharedPreferences prefs = getPreferences(MODE_PRIVATE);
         if (!prefs.contains(getString(R.string.settings_length_key))) {
@@ -71,6 +75,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
     }
 
+    /*
+        Change the displayed fragment to the provided fragment.
+     */
     private void changeInternalFragment(Fragment fragment, int fragmentContainer){
         FragmentManager supportFragmentManager = getSupportFragmentManager();
         supportFragmentManager.beginTransaction()
@@ -79,6 +86,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
 
+    /*
+        When an item has been selected in the navigation drawer,
+        update the displayed fragment.
+     */
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         int id = item.getItemId();
@@ -97,6 +108,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return true;
     }
 
+    /*
+        When the back button is pressed, close the nav drawer if it is open
+        and go back to the previous fragment.
+     */
     @Override
     public void onBackPressed() {
         if (navDrawer != null && navDrawer.isDrawerOpen(GravityCompat.START))
@@ -105,7 +120,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             super.onBackPressed();
     }
 
-    //Ref: https://stackoverflow.com/questions/41547122/android-hamburger-menu-and-back-arrow
+    /*
+        Show the hamburger icon that shows the nav drawer when clicked.
+        This is shown when a sub fragment is not open.
+        Ref: https://stackoverflow.com/questions/41547122/android-hamburger-menu-and-back-arrow
+     */
     @Override
     public void showHamburgerIcon() {
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
@@ -113,7 +132,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         toggle.setToolbarNavigationClickListener(null);
     }
 
-    //Ref: https://stackoverflow.com/questions/41547122/android-hamburger-menu-and-back-arrow
+    /*
+        Show the back icon that when clicked displays the last fragment.
+        This is shown when a sub fragment is open.
+        Ref: https://stackoverflow.com/questions/41547122/android-hamburger-menu-and-back-arrow
+     */
     @Override
     public void showBackIcon() {
         toggle.setDrawerIndicatorEnabled(false);
@@ -125,7 +148,5 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         });
     }
-
-
-
+    
 }

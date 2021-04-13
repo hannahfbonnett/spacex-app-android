@@ -17,6 +17,7 @@ import androidx.appcompat.widget.AppCompatTextView;
 import androidx.fragment.app.Fragment;
 
 import com.example.mobdevspacexapp.R;
+import com.example.mobdevspacexapp.data.api.CompanyResponseListener;
 import com.example.mobdevspacexapp.data.api.SpaceXDataService;
 import com.example.mobdevspacexapp.data.model.Company;
 
@@ -63,8 +64,12 @@ public class CompanyFragment extends Fragment implements View.OnClickListener {
         return v;
     }
 
+    /*
+        Get company info using the SpaceX api.
+        Use the response to update the ui.
+     */
     private void fetchCompanyDataAndUpdateText(){
-        spaceXDataService.getCompanyInfo(new SpaceXDataService.CompanyListener() {
+        spaceXDataService.getCompanyInfo(new CompanyResponseListener() {
             @Override
             public void onError(String message) {
                 Log.d("ERROR", message);
@@ -89,12 +94,18 @@ public class CompanyFragment extends Fragment implements View.OnClickListener {
         });
     }
 
+    /*
+        Set the onClick listeners for the links as this.
+     */
     public void setLinksOnClickListeners() {
         websiteLinkText.setOnClickListener(this);
         flickrLinkText.setOnClickListener(this);
         twitterLinkText.setOnClickListener(this);
     }
 
+    /*
+        Open link in browser when clicked.
+     */
     @Override
     public void onClick(View view) {
         String url = ((TextView)view).getText().toString();
