@@ -64,6 +64,10 @@ public class CompanyFragment extends Fragment implements View.OnClickListener {
         return v;
     }
 
+    /*
+        Get company info using the SpaceX api.
+        Use the response to update the ui.
+     */
     private void fetchCompanyDataAndUpdateText(){
         spaceXDataService.getCompanyInfo(new CompanyResponseListener() {
             @Override
@@ -90,12 +94,18 @@ public class CompanyFragment extends Fragment implements View.OnClickListener {
         });
     }
 
+    /*
+        Set the onClick listeners for the links as this.
+     */
     public void setLinksOnClickListeners() {
         websiteLinkText.setOnClickListener(this);
         flickrLinkText.setOnClickListener(this);
         twitterLinkText.setOnClickListener(this);
     }
 
+    /*
+        Open link in browser when clicked.
+     */
     @Override
     public void onClick(View view) {
         String url = ((TextView)view).getText().toString();
