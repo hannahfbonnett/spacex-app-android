@@ -44,6 +44,10 @@ public class LaunchesPastFragment extends Fragment {
         return v;
     }
 
+    /*
+        Get past launches using the SpaceX api.
+        Use the response to send to the view adapter.
+     */
     private void fetchLaunchesAndUpdateList(final Context context){
         spaceXDataService.getPastLaunches(new LaunchesResponseListener() {
             @Override

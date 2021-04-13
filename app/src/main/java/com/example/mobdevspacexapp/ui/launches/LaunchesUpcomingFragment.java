@@ -44,6 +44,10 @@ public class LaunchesUpcomingFragment extends Fragment {
         return v;
     }
 
+    /*
+        Get upcoming launches using the SpaceX api.
+        Use the response to send to the view adapter.
+     */
     private void fetchLaunchesAndUpdateList(final Context context){
         spaceXDataService.getUpcomingLaunches(new LaunchesResponseListener() {
             @Override
