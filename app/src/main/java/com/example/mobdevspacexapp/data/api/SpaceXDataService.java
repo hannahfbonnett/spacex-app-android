@@ -147,18 +147,19 @@ public class SpaceXDataService {
     }
 
     public Rocket getRocketFromJson(JSONObject response) {
-        Rocket rocket = null;
+        Rocket rocket = new Rocket();
         try {
-            String name = response.getString("name");
-            String description = response.getString("description");
-            String imageLink = response.getJSONArray("flickr_images").get(0).toString();
-            boolean isActive = response.getBoolean("active");
-            float heightMeters = response.getJSONObject("height").getLong("meters");
-            float diameterMeters = response.getJSONObject("diameter").getLong("meters");
-            long massLbs = response.getJSONObject("mass").getLong("lb");
-            String firstFlightDate = response.getString("first_flight");
-            rocket = new Rocket(name, imageLink, description, isActive, heightMeters, diameterMeters, massLbs, firstFlightDate);
-
+            rocket.setName(response.getString("name"));
+            rocket.setDescription(response.getString("description"));
+            rocket.setImageLink(response.getJSONArray("flickr_images").get(0).toString());
+            rocket.setActive(response.getBoolean("active"));
+            rocket.setHeightMeters(response.getJSONObject("height").getLong("meters"));
+            rocket.setHeightFeet(response.getJSONObject("height").getLong("feet"));
+            rocket.setDiameterMeters(response.getJSONObject("diameter").getLong("meters"));
+            rocket.setDiameterFeet(response.getJSONObject("diameter").getLong("feet"));
+            rocket.setMassLbs(response.getJSONObject("mass").getLong("lb"));
+            rocket.setMassKgs(response.getJSONObject("mass").getLong("kg"));
+            rocket.setFirstFlightDate(response.getString("first_flight"));
         } catch (JSONException e) {
             e.printStackTrace();
         }

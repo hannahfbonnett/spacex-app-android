@@ -1,5 +1,6 @@
 package com.example.mobdevspacexapp.ui.rockets;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -52,16 +53,41 @@ public class RocketDetailFragment extends Fragment {
     private void bind(Rocket rocket) {
         rocketNameText.setText(rocket.getName());
         descriptionText.setText(rocket.getDescription());
-        activeText.setText(String.valueOf(rocket.isActive()));
-        heightText.setText(String.valueOf(rocket.getHeightMeters()));
-        diameterText.setText(String.valueOf(rocket.getDiameterMeters()));
-        massText.setText(String.valueOf(rocket.getMassLbs()));
+        if(rocket.isActive()) {
+            activeText.setText(getString(R.string.rocket_active_true));
+        } else {
+            activeText.setText(getString(R.string.rocket_active_false));
+        }
+        if(getPreferredLengthUnit().equalsIgnoreCase("meters")) {
+            heightText.setText(getString(R.string.length_amount_meters, rocket.getHeightMeters()));
+            diameterText.setText(getString(R.string.length_amount_meters, rocket.getDiameterMeters()));
+        } else if (getPreferredLengthUnit().equalsIgnoreCase("feet")) {
+            heightText.setText(getString(R.string.length_amount_feet, rocket.getHeightFeet()));
+            diameterText.setText(getString(R.string.length_amount_feet, rocket.getDiameterFeet()));
+        }
+        if(getPreferredWeightUnit().equalsIgnoreCase("pounds")) {
+            massText.setText(getString(R.string.weight_amount_pounds, rocket.getMassLbs()));
+        } else if(getPreferredWeightUnit().equalsIgnoreCase("kilograms")) {
+            massText.setText(getString(R.string.weight_amount_kilograms, rocket.getMassKgs()));
+        }
         firstFlightDateText.setText(rocket.getFirstFlightDate());
         if(!rocket.getImageLink().equals("null")) {
             Picasso.get()
                     .load(rocket.getImageLink())
                     .into(rocketImage);
         }
+    }
+
+    private String getPreferredLengthUnit() {
+        return getContext()
+                .getSharedPreferences("settings", Context.MODE_PRIVATE)
+                .getString("settings_length_key", "Meters");
+    }
+
+    private String getPreferredWeightUnit() {
+        return getContext()
+                .getSharedPreferences("settings", Context.MODE_PRIVATE)
+                .getString("settings_weight_key", "Pounds");
     }
 
 

@@ -8,4 +8,17 @@
     <string name="drawer_settings_title">Settings</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="settings_length_key">settings_length_key</string>
+    <string name="settings_weight_key">settings_weight_key</string>
+
+    <string name="length_amount_meters">%1$.1f m</string>
+    <string name="length_amount_feet">%1$.1f ft</string>
+
+    <string name="weight_amount_pounds">%1$d lbs</string>
+    <string name="weight_amount_kilograms">%1$d kgs</string>
+
+    <string name="rocket_active_true">Yes</string>
+    <string name="rocket_active_false">No</string>
+
 </resources>

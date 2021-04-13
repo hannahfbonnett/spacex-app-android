@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ListPreference
+        android:entries="@array/settings_list_preference_length_titles"
+        android:entryValues="@array/settings_list_preference_length_values"
+        android:key="@string/settings_length_key"
+        android:title="Length"
+        android:defaultValue="Meters"
+        android:summary="Select your preferred unit of measurement."/>
+
+    <ListPreference
+        android:entries="@array/settings_list_preference_weight_titles"
+        android:entryValues="@array/settings_list_preference_weight_values"
+        android:key="@string/settings_weight_key"
+        android:title="Weight"
+        android:defaultValue="Pounds"
+        android:summary="Select your preferred unit of measurement."/>
+
+
+</PreferenceScreen>

@@ -5,4 +5,22 @@
         <item>Past</item>
         <item>All</item>
     </string-array>
+
+    <string-array name="settings_list_preference_length_titles">
+        <item>Meters</item>
+        <item>Feet</item>
+    </string-array>
+    <string-array name="settings_list_preference_length_values">
+        <item>Meters</item>
+        <item>Feet</item>
+    </string-array>
+
+    <string-array name="settings_list_preference_weight_titles">
+        <item>Pounds</item>
+        <item>Kilograms</item>
+    </string-array>
+    <string-array name="settings_list_preference_weight_values">
+        <item>Pounds</item>
+        <item>Kilograms</item>
+    </string-array>
 </resources>

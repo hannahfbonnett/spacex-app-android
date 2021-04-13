@@ -1,26 +1,53 @@
 package com.example.mobdevspacexapp.ui.settings;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
+import androidx.preference.ListPreference;
+import androidx.preference.Preference;
+import androidx.preference.PreferenceFragmentCompat;
+import androidx.preference.PreferenceScreen;
 
 import com.example.mobdevspacexapp.R;
 
-public class SettingsFragment extends Fragment {
+import static android.content.Context.MODE_PRIVATE;
 
-    @Nullable
+public class SettingsFragment extends PreferenceFragmentCompat {
+
+    private SharedPreferences sharedPreferences;
+
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Settings");
+        setPreferencesFromResource(R.xml.settings_preference, rootKey);
 
-        View v = inflater.inflate(R.layout.settings, container, false);
+        this.sharedPreferences = this.getActivity().getSharedPreferences("settings", MODE_PRIVATE);
 
-        return v;
+        ListPreference lengthListPreference = findPreference("settings_length_key");
+        lengthListPreference.setValue(sharedPreferences.getString(lengthListPreference.getKey(), ""));
+        lengthListPreference.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+            @Override
+            public boolean onPreferenceChange(Preference preference, Object newValue) {
+                System.out.println("Length preference change");
+                System.out.println(preference.getKey() + " preference changed to " + newValue);
+                sharedPreferences.edit().putString(preference.getKey(), newValue.toString()).apply();
+                return true;
+            }
+        });
+
+        ListPreference weightListPreference = findPreference("settings_weight_key");
+        weightListPreference.setValue(sharedPreferences.getString(weightListPreference.getKey(), ""));
+        weightListPreference.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+            @Override
+            public boolean onPreferenceChange(Preference preference, Object newValue) {
+                System.out.println("Weight preference change");
+                System.out.println(preference.getKey() + " preference changed to " + newValue);
+                sharedPreferences.edit().putString(preference.getKey(), newValue.toString()).apply();
+                return true;
+            }
+        });
+
     }
+
 }
