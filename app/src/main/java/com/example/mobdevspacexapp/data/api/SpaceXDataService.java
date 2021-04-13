@@ -39,30 +39,23 @@ public class SpaceXDataService {
         return BASE_API_URL + endpoint;
     }
 
-    //Ref: https://stackoverflow.com/questions/33535435/how-to-create-a-proper-volley-listener-for-cross-class-volley-method-calling
-    public interface LaunchesListener {
-        void onError(String message);
-
-        void onResponse(List<Launch> response);
-    }
-
-    public void getUpcomingLaunches(final LaunchesListener launchesListener) {
+    public void getUpcomingLaunches(final LaunchesResponseListener launchesListener) {
         String url = buildUrlString(LAUNCHES_UPCOMING_API_URL);
         getLaunches(url, launchesListener);
     }
 
-    public void getPastLaunches(final LaunchesListener launchesListener) {
+    public void getPastLaunches(final LaunchesResponseListener launchesListener) {
         String url = buildUrlString(LAUNCHES_PAST_API_URL);
         getLaunches(url, launchesListener);
     }
 
-    public void getAllLaunches(final LaunchesListener launchesListener) {
+    public void getAllLaunches(final LaunchesResponseListener launchesListener) {
         String url = buildUrlString(LAUNCHES_ALL_API_URL);
         getLaunches(url, launchesListener);
     }
 
 
-    public void getLaunches(final String url, final LaunchesListener launchesListener) {
+    public void getLaunches(final String url, final LaunchesResponseListener launchesListener) {
         final List<Launch> launches = new ArrayList<>();
 
         JsonArrayRequest arrayRequest = new JsonArrayRequest(
@@ -76,7 +69,7 @@ public class SpaceXDataService {
                         for (int i = 0; i < numberOfLaunches; i++) {
                             try {
                                 final Launch launch = getLaunchFromJson(response.getJSONObject(i));
-                                getRocketById(response.getJSONObject(i).getString("rocket"), new RocketListener() {
+                                getRocketById(response.getJSONObject(i).getString("rocket"), new RocketResponseListener() {
                                     @Override
                                     public void onError(String message) {
                                         Log.d("ERROR", message);
@@ -120,14 +113,7 @@ public class SpaceXDataService {
         return launch;
     }
 
-    //Ref: https://stackoverflow.com/questions/33535435/how-to-create-a-proper-volley-listener-for-cross-class-volley-method-calling
-    public interface RocketListener {
-        void onError(String message);
-
-        void onResponse(Rocket response);
-    }
-
-    public void getRocketById(final String id, final RocketListener rocketListener) {
+    public void getRocketById(final String id, final RocketResponseListener rocketListener) {
         String url = buildUrlString(ROCKET_ONE_API_URL + id);
 
         JsonObjectRequest objectRequest = new JsonObjectRequest(
@@ -171,14 +157,8 @@ public class SpaceXDataService {
         return rocket;
     }
 
-    //Ref: https://stackoverflow.com/questions/33535435/how-to-create-a-proper-volley-listener-for-cross-class-volley-method-calling
-    public interface CompanyListener {
-        void onError(String message);
 
-        void onResponse(Company response);
-    }
-
-    public void getCompanyInfo(final CompanyListener companyListener) {
+    public void getCompanyInfo(final CompanyResponseListener companyListener) {
         String url = buildUrlString(COMPANY_API_URL);
         JsonObjectRequest arrayRequest = new JsonObjectRequest(
                 Request.Method.GET,
