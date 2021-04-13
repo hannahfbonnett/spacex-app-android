@@ -25,7 +25,9 @@
     <string name="datetime">Date/Time</string>
     <string name="rocket">Rocket</string>
 
+    <string name="rocket_name_placeholder">Rocket name</string>
     <string name="height">Height</string>
+    <string name="diameter">Diameter</string>
     <string name="mass">Mass</string>
     <string name="active">Active</string>
     <string name="first_flight">First flight</string>
