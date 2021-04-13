@@ -45,6 +45,7 @@
     <string name="flight_number">Flight no</string>
     <string name="datetime">Date/Time</string>
     <string name="rocket">Rocket</string>
+    <string name="launch_details_null">Awaiting more information from SpaceX.</string>
 
     <string name="rocket_name_placeholder">Rocket name</string>
     <string name="height">Height</string>
