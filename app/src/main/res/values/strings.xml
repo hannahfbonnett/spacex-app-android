@@ -8,14 +8,29 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
+    <string name="toolbar_title_launches">Launches</string>
+    <string name="toolbar_title_launch">Launch</string>
+    <string name="toolbar_title_rocket">Rocket</string>
+    <string name="toolbar_title_settings">Settings</string>
+    <string name="toolbar_title_company">Company</string>
+
     <string name="settings_length_key">settings_length_key</string>
     <string name="settings_weight_key">settings_weight_key</string>
+
+    <string name="length_meters">Meters</string>
+    <string name="length_feet">Feet</string>
+
+    <string name="weight_pounds">Pounds</string>
+    <string name="weight_kilograms">Kilograms</string>
+
+    <string name="length_default">Meters</string>
+    <string name="weight_default">Pounds</string>
 
     <string name="length_amount_meters">%1$.1f m</string>
     <string name="length_amount_feet">%1$.1f ft</string>
 
-    <string name="weight_amount_pounds">%1$d lbs</string>
-    <string name="weight_amount_kilograms">%1$d kgs</string>
+    <string name="weight_amount_pounds">%1$d lb</string>
+    <string name="weight_amount_kilograms">%1$d kg</string>
 
     <string name="rocket_active_true">Yes</string>
     <string name="rocket_active_false">No</string>
@@ -47,6 +62,8 @@
     <string name="flickr">Flickr</string>
     <string name="twitter">Twitter</string>
     <string name="link_placeholder">link</string>
+
+
 
 
 

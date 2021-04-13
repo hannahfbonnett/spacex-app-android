@@ -30,7 +30,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        System.out.println("MainActivity - onCreate()");
         setContentView(R.layout.activity_main_drawer);
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
         Toolbar toolbar = this.findViewById(R.id.toolbar);
@@ -55,25 +54,25 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             this.navView.getMenu().performIdentifierAction(DEFAULT_DRAWER_ITEM, 0);
         }
 
-        SharedPreferences prefs = getPreferences(MODE_PRIVATE);
-        //prefs.edit().clear().commit(); //todo - remove this
+        initSharedPreferences();
+    }
 
-        if (!prefs.contains("settings_length_key")) {
+    private void initSharedPreferences() {
+        SharedPreferences prefs = getPreferences(MODE_PRIVATE);
+        if (!prefs.contains(getString(R.string.settings_length_key))) {
             SharedPreferences.Editor editor = prefs.edit();
-            editor.putString("settings_length_key", "Meters");
+            editor.putString(getString(R.string.settings_length_key), getString(R.string.length_meters));
             editor.apply();
         }
-
-        if (!prefs.contains("settings_weight_key")) {
+        if (!prefs.contains(getString(R.string.settings_weight_key))) {
             SharedPreferences.Editor editor = prefs.edit();
-            editor.putString("settings_weight_key", "Pounds");
+            editor.putString(getString(R.string.settings_length_key), getString(R.string.weight_pounds));
             editor.apply();
         }
     }
 
     private void changeInternalFragment(Fragment fragment, int fragmentContainer){
         FragmentManager supportFragmentManager = getSupportFragmentManager();
-
         supportFragmentManager.beginTransaction()
                 .replace(fragmentContainer, fragment)
                 .commit();
