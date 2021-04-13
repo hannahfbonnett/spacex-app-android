@@ -59,11 +59,11 @@ public class CompanyFragment extends Fragment implements View.OnClickListener {
         this.flickrLinkText = v.findViewById(R.id.company_flickr_link);
         this.twitterLinkText = v.findViewById(R.id.company_twitter_link);
 
-        fetchCompanyDataAndUpdateText(context);
+        fetchCompanyDataAndUpdateText();
         return v;
     }
 
-    private void fetchCompanyDataAndUpdateText(Context context){
+    private void fetchCompanyDataAndUpdateText(){
         spaceXDataService.getCompanyInfo(new SpaceXDataService.CompanyListener() {
             @Override
             public void onError(String message) {

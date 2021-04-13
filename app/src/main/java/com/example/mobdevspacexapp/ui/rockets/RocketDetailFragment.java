@@ -61,17 +61,17 @@ public class RocketDetailFragment extends Fragment {
         } else {
             activeText.setText(getString(R.string.rocket_active_false));
         }
-        if(getPreferredLengthUnit().equalsIgnoreCase("meters")) {
+        if(getPreferredLengthUnit().equalsIgnoreCase(getString(R.string.length_meters))) {
             heightText.setText(getString(R.string.length_amount_meters, rocket.getHeightMeters()));
             diameterText.setText(getString(R.string.length_amount_meters, rocket.getDiameterMeters()));
-        } else if (getPreferredLengthUnit().equalsIgnoreCase("feet")) {
+        } else if (getPreferredLengthUnit().equalsIgnoreCase(getString(R.string.length_feet))) {
             heightText.setText(getString(R.string.length_amount_feet, rocket.getHeightFeet()));
             diameterText.setText(getString(R.string.length_amount_feet, rocket.getDiameterFeet()));
         }
-        if(getPreferredWeightUnit().equalsIgnoreCase("pounds")) {
-            massText.setText(getString(R.string.weight_amount_pounds, rocket.getMassLbs()));
-        } else if(getPreferredWeightUnit().equalsIgnoreCase("kilograms")) {
-            massText.setText(getString(R.string.weight_amount_kilograms, rocket.getMassKgs()));
+        if(getPreferredWeightUnit().equalsIgnoreCase(getString(R.string.mass_pounds))) {
+            massText.setText(getString(R.string.mass_amount_pounds, rocket.getMassLbs()));
+        } else if(getPreferredWeightUnit().equalsIgnoreCase(getString(R.string.mass_kilograms))) {
+            massText.setText(getString(R.string.mass_amount_kilograms, rocket.getMassKgs()));
         }
         firstFlightDateText.setText(rocket.getFirstFlightDate());
         if(!rocket.getImageLink().equals("null")) {
@@ -84,13 +84,13 @@ public class RocketDetailFragment extends Fragment {
     private String getPreferredLengthUnit() {
         return getActivity()
                 .getPreferences(Context.MODE_PRIVATE)
-                .getString("settings_length_key", "Meters");
+                .getString(getString(R.string.settings_length_key), getString(R.string.length_default_unit));
     }
 
     private String getPreferredWeightUnit() {
         return getActivity()
                 .getPreferences(Context.MODE_PRIVATE)
-                .getString("settings_weight_key", "Pounds");
+                .getString(getString(R.string.settings_mass_key),getString(R.string.mass_default_unit));
     }
 
 

@@ -64,9 +64,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             editor.putString(getString(R.string.settings_length_key), getString(R.string.length_meters));
             editor.apply();
         }
-        if (!prefs.contains(getString(R.string.settings_weight_key))) {
+        if (!prefs.contains(getString(R.string.settings_mass_key))) {
             SharedPreferences.Editor editor = prefs.edit();
-            editor.putString(getString(R.string.settings_length_key), getString(R.string.weight_pounds));
+            editor.putString(getString(R.string.settings_length_key), getString(R.string.mass_pounds));
             editor.apply();
         }
     }

@@ -14,9 +14,6 @@ import static android.content.Context.MODE_PRIVATE;
 
 public class SettingsFragment extends PreferenceFragmentCompat implements Preference.OnPreferenceChangeListener {
 
-    public static final String DEFAULT_LENGTH_UNIT = "Meters";
-    public static final String DEFAULT_MASS_UNIT = "Pounds";
-
     private SharedPreferences sharedPreferences;
 
     @Override
@@ -28,12 +25,12 @@ public class SettingsFragment extends PreferenceFragmentCompat implements Prefer
 
         ListPreference lengthListPreference = findPreference(getString(R.string.settings_length_key));
         if(lengthListPreference != null) {
-            lengthListPreference.setValue(sharedPreferences.getString(lengthListPreference.getKey(), DEFAULT_LENGTH_UNIT));
+            lengthListPreference.setValue(sharedPreferences.getString(lengthListPreference.getKey(), getString(R.string.length_default_unit)));
             lengthListPreference.setOnPreferenceChangeListener(this);
         }
-        ListPreference weightListPreference = findPreference(getString(R.string.settings_weight_key));
+        ListPreference weightListPreference = findPreference(getString(R.string.settings_mass_key));
         if(weightListPreference != null) {
-            weightListPreference.setValue(sharedPreferences.getString(weightListPreference.getKey(), DEFAULT_MASS_UNIT));
+            weightListPreference.setValue(sharedPreferences.getString(weightListPreference.getKey(), getString(R.string.mass_default_unit)));
             weightListPreference.setOnPreferenceChangeListener(this);
         }
     }

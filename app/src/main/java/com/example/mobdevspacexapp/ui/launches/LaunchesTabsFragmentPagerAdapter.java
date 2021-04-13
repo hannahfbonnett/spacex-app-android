@@ -1,5 +1,6 @@
 package com.example.mobdevspacexapp.ui.launches;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
@@ -13,6 +14,7 @@ public class LaunchesTabsFragmentPagerAdapter extends FragmentPagerAdapter {
         this.tabTitles = tabTitles;
     }
 
+    @NonNull
     @Override
     public Fragment getItem(int position) {
         switch (position){
