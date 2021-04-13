@@ -8,15 +8,19 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatImageView;
 import androidx.appcompat.widget.AppCompatTextView;
+import androidx.appcompat.widget.Toolbar;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import com.example.mobdevspacexapp.R;
 import com.example.mobdevspacexapp.data.model.Launch;
 import com.example.mobdevspacexapp.data.model.Rocket;
+import com.example.mobdevspacexapp.ui.HideShowIconInterface;
 import com.example.mobdevspacexapp.ui.rockets.RocketDetailFragment;
 import com.example.mobdevspacexapp.util.DateTimeConverter;
 import com.squareup.picasso.Picasso;
@@ -61,6 +65,7 @@ public class LaunchDetailFragment extends Fragment {
         String value = getActivity().getSharedPreferences("settings", Context.MODE_PRIVATE).getString("settings_length_key", "default");
         System.out.println(value);
 
+        ((HideShowIconInterface) getActivity()).showBackIcon();
         return v;
     }
 

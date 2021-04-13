@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.mobdevspacexapp.R;
+import com.example.mobdevspacexapp.ui.HideShowIconInterface;
 import com.google.android.material.tabs.TabLayout;
 
 import lombok.NoArgsConstructor;
@@ -32,6 +33,8 @@ public class LaunchesTabsFragment extends Fragment {
 
         TabLayout tabLayout = (TabLayout) v.findViewById(R.id.launches_tab_layout);
         tabLayout.setupWithViewPager(vp);
+
+        ((HideShowIconInterface) getActivity()).showHamburgerIcon();
 
         return v;
     }
