@@ -25,6 +25,11 @@ public class SpaceXDataService {
     Context context;
 
     public static final String BASE_API_URL = "https://api.spacexdata.com/v4";
+    public static final String LAUNCHES_UPCOMING_API_URL = "/launches/upcoming";
+    public static final String LAUNCHES_PAST_API_URL = "/launches/past";
+    public static final String LAUNCHES_ALL_API_URL = "/launches";
+    public static final String COMPANY_API_URL = "/company";
+    public static final String ROCKET_ONE_API_URL = "/rockets/";
 
     public SpaceXDataService(Context context) {
         this.context = context;
@@ -42,17 +47,17 @@ public class SpaceXDataService {
     }
 
     public void getUpcomingLaunches(final LaunchesListener launchesListener) {
-        String url = buildUrlString("/launches/upcoming");
+        String url = buildUrlString(LAUNCHES_UPCOMING_API_URL);
         getLaunches(url, launchesListener);
     }
 
     public void getPastLaunches(final LaunchesListener launchesListener) {
-        String url = buildUrlString("/launches/past");
+        String url = buildUrlString(LAUNCHES_PAST_API_URL);
         getLaunches(url, launchesListener);
     }
 
     public void getAllLaunches(final LaunchesListener launchesListener) {
-        String url = buildUrlString("/launches");
+        String url = buildUrlString(LAUNCHES_ALL_API_URL);
         getLaunches(url, launchesListener);
     }
 
@@ -123,7 +128,7 @@ public class SpaceXDataService {
     }
 
     public void getRocketById(final String id, final RocketListener rocketListener) {
-        String url = buildUrlString("/rockets/" + id);
+        String url = buildUrlString(ROCKET_ONE_API_URL + id);
 
         JsonObjectRequest objectRequest = new JsonObjectRequest(
                 Request.Method.GET,
@@ -174,7 +179,7 @@ public class SpaceXDataService {
     }
 
     public void getCompanyInfo(final CompanyListener companyListener) {
-        String url = buildUrlString("/company");
+        String url = buildUrlString(COMPANY_API_URL);
         JsonObjectRequest arrayRequest = new JsonObjectRequest(
                 Request.Method.GET,
                 url,
