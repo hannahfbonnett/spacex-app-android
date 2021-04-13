@@ -82,14 +82,14 @@ public class RocketDetailFragment extends Fragment {
     }
 
     private String getPreferredLengthUnit() {
-        return getContext()
-                .getSharedPreferences("settings", Context.MODE_PRIVATE)
+        return getActivity()
+                .getPreferences(Context.MODE_PRIVATE)
                 .getString("settings_length_key", "Meters");
     }
 
     private String getPreferredWeightUnit() {
-        return getContext()
-                .getSharedPreferences("settings", Context.MODE_PRIVATE)
+        return getActivity()
+                .getPreferences(Context.MODE_PRIVATE)
                 .getString("settings_weight_key", "Pounds");
     }
 
