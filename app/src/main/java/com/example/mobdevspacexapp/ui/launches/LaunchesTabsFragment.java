@@ -22,16 +22,16 @@ public class LaunchesTabsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.launches_tabs_fragment, container, false);
 
-        ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Launches");
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle(getString(R.string.toolbar_title_launches));
 
         String[] tabTitles = this.getResources().getStringArray(R.array.launchesTabTitles);
 
         LaunchesTabsFragmentPagerAdapter adapter = new LaunchesTabsFragmentPagerAdapter(this.getChildFragmentManager(),tabTitles);
 
-        ViewPager vp = (ViewPager) v.findViewById(R.id.launches_pager);
+        ViewPager vp = v.findViewById(R.id.launches_pager);
         vp.setAdapter(adapter);
 
-        TabLayout tabLayout = (TabLayout) v.findViewById(R.id.launches_tab_layout);
+        TabLayout tabLayout = v.findViewById(R.id.launches_tab_layout);
         tabLayout.setupWithViewPager(vp);
 
         ((HideShowIconInterface) getActivity()).showHamburgerIcon();

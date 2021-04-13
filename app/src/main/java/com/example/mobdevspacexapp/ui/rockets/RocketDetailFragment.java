@@ -34,7 +34,7 @@ public class RocketDetailFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.rocket_detail, container, false);
 
-        ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Rocket");
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle(getString(R.string.toolbar_title_rocket));
 
         this.rocketNameText = v.findViewById(R.id.rocket_detail_name);
         this.descriptionText = v.findViewById(R.id.rocket_detail_details);
