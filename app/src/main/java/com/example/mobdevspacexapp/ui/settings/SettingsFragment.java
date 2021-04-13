@@ -24,12 +24,24 @@ public class SettingsFragment extends PreferenceFragmentCompat {
 
         this.sharedPreferences = this.getActivity().getSharedPreferences("settings", MODE_PRIVATE);
 
-        ListPreference listPreference = findPreference("settings_length_key");
-        listPreference.setValue(sharedPreferences.getString(listPreference.getKey(), ""));
-        listPreference.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+        ListPreference lengthListPreference = findPreference("settings_length_key");
+        lengthListPreference.setValue(sharedPreferences.getString(lengthListPreference.getKey(), ""));
+        lengthListPreference.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
             @Override
             public boolean onPreferenceChange(Preference preference, Object newValue) {
-                System.out.println("List preference change");
+                System.out.println("Length preference change");
+                System.out.println(preference.getKey() + " preference changed to " + newValue);
+                sharedPreferences.edit().putString(preference.getKey(), newValue.toString()).apply();
+                return true;
+            }
+        });
+
+        ListPreference weightListPreference = findPreference("settings_weight_key");
+        weightListPreference.setValue(sharedPreferences.getString(weightListPreference.getKey(), ""));
+        weightListPreference.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+            @Override
+            public boolean onPreferenceChange(Preference preference, Object newValue) {
+                System.out.println("Weight preference change");
                 System.out.println(preference.getKey() + " preference changed to " + newValue);
                 sharedPreferences.edit().putString(preference.getKey(), newValue.toString()).apply();
                 return true;
