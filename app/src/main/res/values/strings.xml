@@ -38,6 +38,8 @@
     <string name="mass_amount_pounds">%1$d lb</string>
     <string name="mass_amount_kilograms">%1$d kg</string>
 
+    <string name="launch_item_flight_number">Flight no: %1d</string>
+
     <string name="rocket_active_true">Yes</string>
     <string name="rocket_active_false">No</string>
 
