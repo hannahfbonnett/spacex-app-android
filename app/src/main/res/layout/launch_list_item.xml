@@ -31,7 +31,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="@dimen/launch_list_item_name_size"
-            android:text="Launch Name"/>
+            android:text="@string/launch_name_placeholder"/>
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/launch_list_item_flight_number"
@@ -40,7 +40,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="@dimen/launch_list_item_flight_number_size"
-            android:text="Launch Flight Number"/>
+            android:text="@string/flight_number"/>
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/launch_list_item_datetime"
@@ -49,7 +49,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="@dimen/launch_list_item_datetime_size"
-            android:text="Launch DateTime"/>
+            android:text="@string/datetime"/>
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 

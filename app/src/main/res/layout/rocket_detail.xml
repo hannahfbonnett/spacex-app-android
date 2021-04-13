@@ -1,7 +1,6 @@
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -19,7 +18,7 @@
             android:layout_marginTop="24dp"
             android:layout_marginLeft="@dimen/standard_margin"
             android:layout_marginRight="@dimen/standard_margin"
-            android:text="Rocket name"
+            android:text="@string/rocket_name_placeholder"
             android:textSize="@dimen/detail_title_size"
             android:layout_gravity="start"/>
 
@@ -47,7 +46,7 @@
                 android:textAlignment="textStart"
                 android:layout_gravity="start"
                 android:textSize="@dimen/detail_text_size"
-                android:text="Active"/>
+                android:text="@string/active"/>
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="0dp"
@@ -57,7 +56,7 @@
                 android:textAlignment="textEnd"
                 android:layout_gravity="end"
                 android:textSize="@dimen/detail_text_size"
-                android:text="value"/>
+                android:text="@string/value_placeholder"/>
 
         </LinearLayout>
 
@@ -78,7 +77,7 @@
                 android:textAlignment="textStart"
                 android:layout_gravity="start"
                 android:textSize="@dimen/detail_text_size"
-                android:text="Height"/>
+                android:text="@string/height"/>
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="0dp"
@@ -88,7 +87,7 @@
                 android:textAlignment="textEnd"
                 android:layout_gravity="end"
                 android:textSize="@dimen/detail_text_size"
-                android:text="value"/>
+                android:text="@string/value_placeholder"/>
 
         </LinearLayout>
 
@@ -109,7 +108,7 @@
                 android:textAlignment="textStart"
                 android:layout_gravity="start"
                 android:textSize="@dimen/detail_text_size"
-                android:text="Diameter"/>
+                android:text="@string/diameter"/>
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="0dp"
@@ -119,7 +118,7 @@
                 android:textAlignment="textEnd"
                 android:layout_gravity="end"
                 android:textSize="@dimen/detail_text_size"
-                android:text="value"/>
+                android:text="@string/value_placeholder"/>
 
         </LinearLayout>
 
@@ -140,7 +139,7 @@
                 android:textAlignment="textStart"
                 android:layout_gravity="start"
                 android:textSize="@dimen/detail_text_size"
-                android:text="Mass"/>
+                android:text="@string/mass"/>
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="0dp"
@@ -150,7 +149,7 @@
                 android:textAlignment="textEnd"
                 android:layout_gravity="end"
                 android:textSize="@dimen/detail_text_size"
-                android:text="value"/>
+                android:text="@string/value_placeholder"/>
 
         </LinearLayout>
 
@@ -171,7 +170,7 @@
                 android:textAlignment="textStart"
                 android:layout_gravity="start"
                 android:textSize="@dimen/detail_text_size"
-                android:text="First flight"/>
+                android:text="@string/first_flight"/>
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="0dp"
@@ -181,7 +180,7 @@
                 android:textAlignment="textEnd"
                 android:layout_gravity="end"
                 android:textSize="@dimen/detail_text_size"
-                android:text="value"/>
+                android:text="@string/value_placeholder"/>
 
         </LinearLayout>
 
@@ -194,7 +193,7 @@
             android:layout_marginTop="26dp"
             android:layout_marginLeft="@dimen/standard_margin"
             android:layout_marginRight="@dimen/standard_margin"
-            android:text="Details"
+            android:text="@string/details"
             android:textSize="@dimen/detail_subtitle_size"
             android:layout_gravity="start"/>
 
@@ -207,7 +206,7 @@
             android:layout_marginRight="@dimen/standard_margin"
             android:layout_marginBottom="@dimen/standard_margin"
             android:textSize="@dimen/detail_text_size"
-            android:text="description here"/>
+            android:text="@string/description_placeholder"/>
 
 
 

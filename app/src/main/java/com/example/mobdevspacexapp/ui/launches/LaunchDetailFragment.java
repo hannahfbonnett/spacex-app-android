@@ -39,7 +39,7 @@ public class LaunchDetailFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.launch_detail, container, false);
 
-        ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Launch");
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle(getString(R.string.toolbar_title_launch));
 
         final Context context = getContext();
         if (context == null) return v;
