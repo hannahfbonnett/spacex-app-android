@@ -8,12 +8,11 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.preference.Preference;
-import androidx.preference.PreferenceManager;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.example.mobdevspacexapp.R;
 import com.example.mobdevspacexapp.ui.company.CompanyFragment;
@@ -21,13 +20,12 @@ import com.example.mobdevspacexapp.ui.launches.LaunchesTabsFragment;
 import com.example.mobdevspacexapp.ui.settings.SettingsFragment;
 import com.google.android.material.navigation.NavigationView;
 
-import java.util.Map;
-
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, HideShowIconInterface {
 
     private static final int DEFAULT_DRAWER_ITEM = R.id.nav_drawer_launches;
     private DrawerLayout navDrawer;
     private NavigationView navView;
+    private ActionBarDrawerToggle toggle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +37,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         this.setSupportActionBar(toolbar);
 
         this.navDrawer = this.findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+        this.toggle = new ActionBarDrawerToggle(
                 this,
                 this.navDrawer,
                 toolbar,
@@ -58,7 +56,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
 
         SharedPreferences prefs = getSharedPreferences("settings", MODE_PRIVATE);
-        prefs.edit().clear().commit(); //todo - remove this
+        //prefs.edit().clear().commit(); //todo - remove this
 
         if (!prefs.contains("settings_length_key")) {
             SharedPreferences.Editor editor = prefs.edit();
@@ -85,7 +83,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         int id = item.getItemId();
-
         switch (id){
             case R.id.nav_drawer_launches:
                 changeInternalFragment(new LaunchesTabsFragment(), R.id.fragmentContainer);
@@ -97,9 +94,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 changeInternalFragment(new CompanyFragment(), R.id.fragmentContainer);
                 break;
         }
-
         this.navDrawer.closeDrawer(GravityCompat.START);
-
         return true;
     }
 
@@ -111,7 +106,26 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             super.onBackPressed();
     }
 
+    //Ref: https://stackoverflow.com/questions/41547122/android-hamburger-menu-and-back-arrow
+    @Override
+    public void showHamburgerIcon() {
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+        toggle.setDrawerIndicatorEnabled(true);
+        toggle.setToolbarNavigationClickListener(null);
+    }
 
+    //Ref: https://stackoverflow.com/questions/41547122/android-hamburger-menu-and-back-arrow
+    @Override
+    public void showBackIcon() {
+        toggle.setDrawerIndicatorEnabled(false);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toggle.setToolbarNavigationClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+    }
 
 
 

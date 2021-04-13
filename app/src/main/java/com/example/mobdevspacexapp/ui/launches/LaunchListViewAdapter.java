@@ -92,6 +92,7 @@ public class LaunchListViewAdapter extends RecyclerView.Adapter<LaunchListViewAd
                     .replace(R.id.fragmentContainer, launchDetailFragment)
                     .addToBackStack(null)
                     .commit();
+
         }
 
     }

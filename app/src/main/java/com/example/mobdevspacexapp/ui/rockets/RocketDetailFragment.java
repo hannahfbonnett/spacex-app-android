@@ -15,6 +15,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.mobdevspacexapp.R;
 import com.example.mobdevspacexapp.data.model.Rocket;
+import com.example.mobdevspacexapp.ui.HideShowIconInterface;
 import com.squareup.picasso.Picasso;
 
 public class RocketDetailFragment extends Fragment {
@@ -46,6 +47,8 @@ public class RocketDetailFragment extends Fragment {
 
         Rocket rocket = getArguments().getParcelable("Rocket");
         bind(rocket);
+
+        ((HideShowIconInterface) getActivity()).showBackIcon();
 
         return v;
     }
