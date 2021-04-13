@@ -35,5 +35,19 @@
     <string name="description_placeholder">description here</string>
     <string name="details">Details</string>
 
+    <string name="company_name_placeholder">Company name</string>
+    <string name="founder">Founder</string>
+    <string name="founded">Founded</string>
+    <string name="employees">Employees</string>
+    <string name="vehicles">Vehicles</string>
+    <string name="launch_sites">Launch sites</string>
+    <string name="test_sites">Test sites</string>
+    <string name="links">Links</string>
+    <string name="website">Website</string>
+    <string name="flickr">Flickr</string>
+    <string name="twitter">Twitter</string>
+    <string name="link_placeholder">link</string>
+
+
 
 </resources>
