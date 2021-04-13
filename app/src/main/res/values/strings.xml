@@ -2,7 +2,6 @@
     <string name="app_name">Mob Dev SpaceX App</string>
 
     <string name="drawer_header_title">SpaceX</string>
-
     <string name="drawer_launches_title">Launches</string>
     <string name="drawer_company_title">About SpaceX</string>
     <string name="drawer_settings_title">Settings</string>
@@ -21,6 +20,18 @@
     <string name="rocket_active_true">Yes</string>
     <string name="rocket_active_false">No</string>
 
+    <string name="detail_item_launch_name_placeholder">Launch name</string>
+    <string name="detail_item_flight_number">Flight no</string>
+    <string name="detail_item_datetime">Date/Time</string>
+    <string name="detail_item_rocket">Rocket</string>
+
+    <string name="detail_item_height">Height</string>
+    <string name="detail_item_weight">Mass</string>
+    <string name="detail_item_active">Active</string>
+    <string name="detail_item_first_flight">First flight</string>
+    <string name="detail_item_value_placeholder">value</string>
+    <string name="detail_item_description_placeholder">description here</string>
+    <string name="detail_item_details">Details</string>
 
 
 </resources>
