@@ -151,7 +151,8 @@
             android:layout_marginLeft="@dimen/standard_margin"
             android:layout_marginRight="@dimen/standard_margin"
             android:textSize="@dimen/detail_text_size"
-            android:text="@string/description_placeholder"/>
+            android:text="@string/description_placeholder"
+            android:layout_marginBottom="@dimen/standard_margin"/>
 
 
 
