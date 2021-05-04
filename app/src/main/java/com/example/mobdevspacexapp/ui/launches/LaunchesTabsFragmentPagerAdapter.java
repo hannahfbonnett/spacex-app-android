@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
+//Ref: altered from learning resource TabsExercise.
 public class LaunchesTabsFragmentPagerAdapter extends FragmentPagerAdapter {
 
     private String[] tabTitles;

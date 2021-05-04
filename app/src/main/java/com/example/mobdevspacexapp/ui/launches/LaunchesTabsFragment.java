@@ -15,6 +15,7 @@ import com.google.android.material.tabs.TabLayout;
 
 import lombok.NoArgsConstructor;
 
+//Ref: altered from learning resource TabsExercise.
 @NoArgsConstructor
 public class LaunchesTabsFragment extends Fragment {
 
