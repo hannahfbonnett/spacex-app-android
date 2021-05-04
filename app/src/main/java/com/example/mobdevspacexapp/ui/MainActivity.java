@@ -53,7 +53,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             this.navView.setCheckedItem(DEFAULT_DRAWER_ITEM);
             this.navView.getMenu().performIdentifierAction(DEFAULT_DRAWER_ITEM, 0);
         }
-
         initSharedPreferences();
     }
 
@@ -70,7 +69,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
         if (!prefs.contains(getString(R.string.settings_mass_key))) {
             SharedPreferences.Editor editor = prefs.edit();
-            editor.putString(getString(R.string.settings_length_key), getString(R.string.mass_pounds));
+            editor.putString(getString(R.string.settings_mass_key), getString(R.string.mass_pounds));
             editor.apply();
         }
     }

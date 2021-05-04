@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<androidx.core.widget.NestedScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
@@ -15,6 +15,7 @@
         <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@android:color/primary_text_light"
             android:id="@+id/company_name"
             android:textSize="@dimen/detail_title_size"
             android:text="@string/company_name_placeholder"
@@ -26,7 +27,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/company_description"
-            android:text="@string/description_placeholder"
+            android:text="@string/value_placeholder"
             android:textSize="@dimen/detail_text_size"
             android:layout_marginTop="@dimen/standard_margin"
             android:layout_marginBottom="@dimen/standard_margin"
@@ -49,6 +50,7 @@
                 android:textAlignment="textStart"
                 android:layout_gravity="start"
                 android:textSize="@dimen/detail_text_size"
+                android:textColor="@android:color/primary_text_light"
                 android:text="@string/founder"/>
 
             <androidx.appcompat.widget.AppCompatTextView
@@ -80,6 +82,7 @@
                 android:textAlignment="textStart"
                 android:layout_gravity="start"
                 android:textSize="@dimen/detail_text_size"
+                android:textColor="@android:color/primary_text_light"
                 android:text="@string/founded"/>
 
             <androidx.appcompat.widget.AppCompatTextView
@@ -109,6 +112,7 @@
                 android:layout_weight="50"
                 android:id="@+id/company_employees"
                 android:textSize="@dimen/detail_text_size"
+                android:textColor="@android:color/primary_text_light"
                 android:text="@string/employees"/>
 
             <androidx.appcompat.widget.AppCompatTextView
@@ -138,6 +142,7 @@
                 android:layout_weight="50"
                 android:id="@+id/company_vehicles"
                 android:textSize="@dimen/detail_text_size"
+                android:textColor="@android:color/primary_text_light"
                 android:text="@string/vehicles"/>
 
             <androidx.appcompat.widget.AppCompatTextView
@@ -167,6 +172,7 @@
                 android:layout_weight="50"
                 android:id="@+id/company_launch_sites"
                 android:textSize="@dimen/detail_text_size"
+                android:textColor="@android:color/primary_text_light"
                 android:text="@string/launch_sites"/>
 
             <androidx.appcompat.widget.AppCompatTextView
@@ -196,6 +202,7 @@
                 android:layout_weight="50"
                 android:id="@+id/company_test_sites"
                 android:textSize="@dimen/detail_text_size"
+                android:textColor="@android:color/primary_text_light"
                 android:text="@string/test_sites"/>
 
             <androidx.appcompat.widget.AppCompatTextView
@@ -221,6 +228,7 @@
             android:layout_marginLeft="@dimen/standard_margin"
             android:layout_marginRight="@dimen/standard_margin"
             android:text="@string/links"
+            android:textColor="@android:color/primary_text_light"
             android:textSize="@dimen/detail_subtitle_size"/>
 
 
@@ -237,6 +245,7 @@
                 android:layout_weight="30"
                 android:id="@+id/company_website"
                 android:textSize="@dimen/detail_text_size"
+                android:textColor="@android:color/primary_text_light"
                 android:text="@string/website"/>
 
             <androidx.appcompat.widget.AppCompatTextView
@@ -247,9 +256,8 @@
                 android:textAlignment="textEnd"
                 android:layout_gravity="end"
                 android:textSize="@dimen/detail_text_size"
-                android:text="@string/link_placeholder"
-                android:drawableEnd="@drawable/ic_chevron_right"
-                android:drawableRight="@drawable/ic_chevron_right"/>
+                android:text="@string/value_placeholder"
+                app:drawableRightCompat="@drawable/ic_chevron_right"/>
 
         </LinearLayout>
 
@@ -268,6 +276,7 @@
                 android:layout_weight="30"
                 android:id="@+id/company_flickr"
                 android:textSize="@dimen/detail_text_size"
+                android:textColor="@android:color/primary_text_light"
                 android:text="@string/flickr"/>
 
             <androidx.appcompat.widget.AppCompatTextView
@@ -278,9 +287,8 @@
                 android:textAlignment="textEnd"
                 android:layout_gravity="end"
                 android:textSize="@dimen/detail_text_size"
-                android:text="@string/link_placeholder"
-                android:drawableEnd="@drawable/ic_chevron_right"
-                android:drawableRight="@drawable/ic_chevron_right"/>
+                android:text="@string/value_placeholder"
+                app:drawableRightCompat="@drawable/ic_chevron_right"/>
 
         </LinearLayout>
 
@@ -291,7 +299,8 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_marginLeft="@dimen/standard_margin"
-            android:layout_marginRight="@dimen/standard_margin">
+            android:layout_marginRight="@dimen/standard_margin"
+            android:layout_marginBottom="@dimen/standard_margin">
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="0dp"
@@ -299,6 +308,7 @@
                 android:layout_weight="30"
                 android:id="@+id/company_twitter"
                 android:textSize="@dimen/detail_text_size"
+                android:textColor="@android:color/primary_text_light"
                 android:text="@string/twitter"/>
 
             <androidx.appcompat.widget.AppCompatTextView
@@ -309,9 +319,8 @@
                 android:textAlignment="textEnd"
                 android:layout_gravity="end"
                 android:textSize="@dimen/detail_text_size"
-                android:text="@string/link_placeholder"
-                android:drawableEnd="@drawable/ic_chevron_right"
-                android:drawableRight="@drawable/ic_chevron_right"/>
+                android:text="@string/value_placeholder"
+                app:drawableRightCompat="@drawable/ic_chevron_right"/>
 
         </LinearLayout>
 
@@ -319,5 +328,5 @@
     </androidx.appcompat.widget.LinearLayoutCompat>
 
 
-</androidx.core.widget.NestedScrollView>
+</ScrollView>
 

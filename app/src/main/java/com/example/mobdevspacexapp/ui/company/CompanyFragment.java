@@ -95,7 +95,7 @@ public class CompanyFragment extends Fragment implements View.OnClickListener {
     }
 
     /*
-        Set the onClick listeners for the links as this.
+        Set the onClick listeners for the links.
      */
     public void setLinksOnClickListeners() {
         websiteLinkText.setOnClickListener(this);
@@ -104,7 +104,7 @@ public class CompanyFragment extends Fragment implements View.OnClickListener {
     }
 
     /*
-        Open link in browser when clicked.
+        Open link in an available external browser app when clicked.
      */
     @Override
     public void onClick(View view) {
@@ -112,6 +112,8 @@ public class CompanyFragment extends Fragment implements View.OnClickListener {
         Intent intent = new Intent();
         intent.setAction(Intent.ACTION_VIEW);
         intent.setData(Uri.parse(url));
-        startActivity(intent);
+        if (intent.resolveActivity(getActivity().getPackageManager()) != null) {
+            startActivity(intent);
+        }
     }
 }
