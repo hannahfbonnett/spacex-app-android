@@ -16,6 +16,11 @@ public class SettingsFragment extends PreferenceFragmentCompat implements Prefer
 
     private SharedPreferences sharedPreferences;
 
+    /*
+        Inflate the hierarchy using the provided XML attribute.
+        Change the action bar title.
+        Get the stored preferences and update the UI.
+     */
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle(getString(R.string.toolbar_title_settings));

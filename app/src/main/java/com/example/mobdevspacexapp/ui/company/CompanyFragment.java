@@ -37,6 +37,12 @@ public class CompanyFragment extends Fragment implements View.OnClickListener {
     private AppCompatTextView flickrLinkText;
     private AppCompatTextView twitterLinkText;
 
+    /*
+        Inflate the company info layout.
+        Change the action bar title.
+        Find the views using their ID's.
+        Fetch the company info data and update.
+     */
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

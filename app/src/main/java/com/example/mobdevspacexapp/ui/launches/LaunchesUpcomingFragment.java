@@ -26,9 +26,14 @@ public class LaunchesUpcomingFragment extends Fragment {
     private SpaceXDataService spaceXDataService;
     private RecyclerView launchListView;
 
+    /*
+        Inflate the launch list layout.
+        Find the views using their ID's.
+        Fetch the launch data.
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.launches_innertabs, container, false);
+        View v = inflater.inflate(R.layout.launches_list, container, false);
 
         final Context context = getContext();
         if (context == null) return v;
