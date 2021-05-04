@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
+//Ref: altered from learning resource TabsExercise.
 public class LaunchesTabsFragmentPagerAdapter extends FragmentPagerAdapter {
 
     private String[] tabTitles;
@@ -14,6 +15,9 @@ public class LaunchesTabsFragmentPagerAdapter extends FragmentPagerAdapter {
         this.tabTitles = tabTitles;
     }
 
+    /*
+        Return the Fragment associated with a specified position.
+     */
     @NonNull
     @Override
     public Fragment getItem(int position) {
@@ -27,11 +31,17 @@ public class LaunchesTabsFragmentPagerAdapter extends FragmentPagerAdapter {
         }
     }
 
+    /*
+        Return the number of views available.
+     */
     @Override
     public int getCount() {
         return this.tabTitles.length;
     }
 
+    /*
+        Return the page title associated with a specified position.
+     */
     @Override
     public CharSequence getPageTitle(int position) {
         return this.tabTitles[position];

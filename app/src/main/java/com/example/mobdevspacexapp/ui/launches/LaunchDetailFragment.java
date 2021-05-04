@@ -31,6 +31,12 @@ public class LaunchDetailFragment extends Fragment {
     private AppCompatImageView launchIcon;
     private AppCompatTextView launchDetailsText;
 
+    /*
+        Inflate the launch detail layout.
+        Change the action bar title.
+        Find the views using their ID's.
+        Bind the launch data to the views and add an on click listener.
+     */
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

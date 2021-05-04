@@ -11,7 +11,7 @@
         android:gravity="center_horizontal"
         android:layout_marginBottom="@dimen/standard_margin">
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/rocket_detail_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -23,7 +23,7 @@
             android:textColor="@android:color/primary_text_light"
             android:layout_gravity="start"/>
 
-        <ImageView
+        <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/rocket_detail_image"
             android:layout_width="match_parent"
             android:layout_height="250dp"
@@ -192,7 +192,7 @@
 
 
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/rocket_detail_details_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -204,7 +204,7 @@
             android:textColor="@android:color/primary_text_light"
             android:layout_gravity="start"/>
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/rocket_detail_details"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

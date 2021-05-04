@@ -15,9 +15,17 @@ import com.google.android.material.tabs.TabLayout;
 
 import lombok.NoArgsConstructor;
 
+//Ref: altered from learning resource TabsExercise.
 @NoArgsConstructor
 public class LaunchesTabsFragment extends Fragment {
 
+    /*
+        Inflate the launches tabs layout.
+        Change the action bar title.
+        Setup the tab titles and give them to the custom adapter.
+        Assign the adapter to the view pager.
+        Assign the view pager to the tab layout.
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.launches_tabs_fragment, container, false);
@@ -26,7 +34,7 @@ public class LaunchesTabsFragment extends Fragment {
 
         String[] tabTitles = this.getResources().getStringArray(R.array.launchesTabTitles);
 
-        LaunchesTabsFragmentPagerAdapter adapter = new LaunchesTabsFragmentPagerAdapter(this.getChildFragmentManager(),tabTitles);
+        LaunchesTabsFragmentPagerAdapter adapter = new LaunchesTabsFragmentPagerAdapter(this.getChildFragmentManager(), tabTitles);
 
         ViewPager vp = v.findViewById(R.id.launches_pager);
         vp.setAdapter(adapter);

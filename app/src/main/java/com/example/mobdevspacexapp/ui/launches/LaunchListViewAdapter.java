@@ -31,6 +31,10 @@ public class LaunchListViewAdapter extends RecyclerView.Adapter<LaunchListViewAd
         this.launches = launches;
     }
 
+    /*
+        Inflate the launch list item layout.
+        Return the view holder.
+     */
     @NonNull
     @Override
     public LaunchListViewAdapter.LaunchListViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

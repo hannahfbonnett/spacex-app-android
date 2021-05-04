@@ -29,6 +29,12 @@ public class RocketDetailFragment extends Fragment {
     private AppCompatTextView firstFlightDateText;
     private AppCompatImageView rocketImage;
 
+    /*
+        Inflate the rocket detail layout.
+        Change the action bar title.
+        Find the views using their ID's.
+        Bind the rocket data to the views.
+     */
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
